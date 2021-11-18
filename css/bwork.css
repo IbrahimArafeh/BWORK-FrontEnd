@@ -1,0 +1,620 @@
+/** start header information */
+
+div.header {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    background-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(41, 41, 89, 1) 40%, rgba(0, 212, 255, 1) 100%);
+    color: rgb(255, 255, 255);
+}
+
+img.header {
+    vertical-align: middle;
+}
+
+span.header {
+    display: inline-flex;
+    align-items: center;
+}
+
+span.header-info {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 2em;
+    margin-right: 2em;
+    font-size: 0.8em;
+}
+
+
+/**---------end of header information -------------------*/
+
+
+/** -------------- main div -----------------------------*/
+
+div.main {
+    display: block;
+    float: middle;
+    margin: auto;
+}
+
+
+/**------------------ form-window --------------------------*/
+
+div.ps-form-window {
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 90%;
+    display: block;
+}
+
+div.ps-tabpage {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+div.data {
+    width: 100%;
+}
+
+div.ps-tabpage-panel {
+    width: 100%;
+    font-size: 14px;
+}
+
+div.ps-data-container {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    min-width: 30em;
+    display: inline-grid;
+    border-radius: 1em;
+    margin: 3px;
+    border: 1.5px solid #000;
+}
+
+div.hidden {
+    display: none;
+}
+
+div.visible {
+    display: block;
+}
+
+div.ps-combine {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 0.5em;
+    display: block;
+}
+
+
+/** -----------------end tab pages -------------------*/
+
+div.ps-action {
+    margin-top: 1em;
+    display: inline-block;
+}
+
+button.ps-tabpage-button {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+button.tabpage-active {
+    background-color: #ccc;
+}
+
+.tabpage-inactive:hover {
+    background-color: #ddd;
+}
+
+.tabpage-active:hover {
+    background-color: #ddd;
+}
+
+
+/** ------------------- panel types ------------------*/
+
+
+/** ------------------- components -----------------*/
+
+input[type="text"],
+input[type="string"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select.data-item {
+    font-size: 0.9em;
+    border: 1px solid rgba(3, 102, 214, 0.3);
+    border-radius: 0.5em;
+    height: 2em;
+    width: 85%;
+}
+
+input[type="checkbox"].data-item,
+input[type="color"].data-item {
+    font-size: 0.9em;
+    border: 1px solid rgba(3, 102, 214, 0.3);
+    border-radius: 0.5em;
+}
+
+input.data-item:focus,
+select.data-item:focus {
+    outline: none;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+select.mandatory,
+input.mandatory {
+    border-color: rgba(255, 100, 220, 0.3);
+}
+
+select.mandatory:focus,
+input.mandatory:focus {
+    outline: none;
+    box-shadow: rgba(255, 100, 220, 0.3) 0px 0px 0px 3px;
+}
+
+label.data-item {
+    font-size: 0.9em;
+    display: inline-block;
+    text-align: right;
+    width: 30%;
+}
+
+label.mandatory {
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+/** buttons **/
+
+button.ps-button-save {
+    outline: none;
+    border: 1px solid rgba(3, 102, 214, 0.3);
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+    margin: 3px;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button.ps-button-save:hover,
+button.ps-button-close:hover,
+button.ps-button-normal-small:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+
+button.ps-button-close {
+    display: inline-block;
+    outline: none;
+    border: 1px solid rgba(3, 102, 214, 0.3);
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: coral;
+    color: white;
+    margin: 3px;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.ps-button-normal {
+    border: none;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+button.ps-button-normal-small {
+    display: inline-block;
+    outline: none;
+    border: 2px solid #004085;
+    border-radius: 0.5em;
+    background-color: #008CBA;
+    ;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    margin: 3px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+button.ps-button-normal:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+
+/** -------------- query objects ----------------------*/
+
+div.ps-db-query {
+    display: none;
+}
+
+
+/** --------------- progress bar ----------------------*/
+
+#progress-bar {
+    width: 0px;
+    height: 1em;
+    background-color: lightBlue;
+    max-width: 100%;
+    margin-top: 2em;
+}
+
+
+/*********************************************************
+ * message - popup messages (progress bar, errors...etc)
+ *********************************************************/
+
+div.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+div.error-message {
+    border: 2px solid rgb( 128, 0, 0);
+    border-radius: 1em;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-width: 20em;
+    min-height: 5em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: #f8a7a7;
+    color: white;
+}
+
+div.success-message {
+    border: 2px solid rgb( 0, 128, 0);
+    border-radius: 1em;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-width: 20em;
+    min-height: 5em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: #98e2b4;
+    color: white;
+}
+
+div.confirm-message {
+    border: 2px solid #c6c8ca;
+    border-radius: 1em;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-width: 20em;
+    min-height: 5em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: #c6c8ca;
+    color: white;
+}
+
+div.note-message {
+    border: 2px solid rgb( 0, 0, 128);
+    border-radius: 1em;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    min-width: 20em;
+    min-height: 5em;
+    padding: 1em;
+    font-weight: bold;
+    background-color: #93bfe2;
+    color: white;
+}
+
+.message-text {
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+
+/****************************form to write triggers */
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+    margin: 0;
+}
+
+.modal-header {
+    background-color: coral;
+    padding: 15px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.modal-footer {
+    background-color: coral;
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.modal-body {
+    padding: 10px 20px;
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    width: 40%;
+    box-shadow: 0 5px 8px 0 rbga(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+    border-radius: 4px;
+}
+
+
+/***************************************************/
+
+textarea.triggertext {
+    resize: none;
+    padding: 10px;
+    width: 90%;
+    height: 200px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+
+/********************Spreed Sheet style ********************/
+
+.genContainer {
+    height: 200px;
+    position: relative;
+    margin-bottom: 35px;
+    /* max-width: 1000px; */
+    margin-bottom: 50px;
+}
+
+.tblContainer {
+    height: 190px;
+    overflow-y: scroll;
+    border: 1px solid lightblue;
+}
+
+.empTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    /* new Update */
+    text-align: center;
+    position: relative;
+    /* new Update for responsive */
+}
+
+.empTable td,
+.empTable th {
+    border: 1px solid #ddd;
+    padding: 3px;
+}
+
+.empTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.divCon {
+    position: inline-block;
+}
+
+.empTable tr:hover {
+    background-color: #ddd;
+}
+
+.empTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.tblHeaderFixed {
+    background: white;
+    position: sticky;
+    top: 0;
+    /* Don't forget this, required for the stickiness */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*************** INPUT Button **************/
+
+
+/*** btn-light ***/
+
+.ps-btn-light-primary,
+.ps-btn-light-success,
+.ps-btn-light-warning,
+.ps-btn-light-danger,
+.ps-btn-light-sm,
+.ps-light-btn {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.1em 0.1em 0;
+    border: 0.16em solid rgba(255, 255, 255, 0);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.ps-btn-light:hover,
+.ps-btn-light-danger:hover,
+.ps-btn-light-primary:hover,
+.ps-btn-light-success:hover,
+.ps-btn-light-warning:hover {
+    border-color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+@media all and (max-width:30em) {
+    .ps-btn-light-sm,
+    .ps-btn-light-lg,
+    .ps-btn-light-xl {
+        display: block;
+        margin: 0.2em auto;
+    }
+}
+
+.ps-btn-light-danger {
+    background-color: #f14e4e;
+}
+
+.ps-btn-light-warning {
+    background-color: #f1bb4e;
+}
+
+.ps-btn-light-success {
+    background-color: #4ef18f;
+}
+
+.ps-btn-light-primary {
+    background-color: #4e9af1;
+}
+
+
+/*** btn-primary ***/
+
+.ps-btn-primary {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 1em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.ps-btn-primary:hover {
+    background-color: #4095c6;
+    cursor: pointer;
+}
+
+@media all and (max-width:30em) {
+    .ps-btn-primary {
+        display: block;
+        margin: 0.2em auto;
+    }
+}
+
+
+/*** btn-success ***/
+
+.ps-btn-success,
+.ps-btn-danger {
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #e2dcdcd0;
+    margin: 0 0.2em 0.2em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #361313;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: #FFFFFF;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+.ps-btn-success {
+    background-color: #42cc8c;
+}
+
+.ps-btn-danger {
+    background-color: #e96060;
+}
+
+.ps-btn-success:hover,
+.ps-btn-danger:hover {
+    text-shadow: 0 0 2em rgba(255, 255, 255, 1);
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    cursor: pointer;
+}
+
+@media all and (max-width:30em) {
+    .ps-btn-success,
+    .ps-btn-danger {
+        display: block;
+        margin: 0.4em auto;
+    }
+}

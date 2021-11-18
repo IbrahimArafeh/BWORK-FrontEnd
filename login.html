@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Document</title>
+</head>
+
+<body class="login-body">
+    <h2 class="login-h2">PRIMA SYSTEM L.L.C</h2>
+    <div class="login-container" id="container">
+        <div class="login-form-container login-sign-in-container">
+            <form id="formID" class="login-form" name="myform">
+                <img class="login-logo" src="Content/beeLogo.png">
+                <br>
+                <h1 class="login-h1">Sign in</h1>
+                <br>
+                <input id="loginUsrename" type="text" class="login-input" placeholder="Username" />
+                <span role="alert" id="loginUsrename_" class="login-span-error">Please enter Username</span>
+                <input id="loginPassword" type="password" class="login-input" placeholder="Password" />
+                <span role="alert" id="loginPassword_" class="login-span-error">Please enter Password</span>
+                <a href="#" class="login-a">Forgot your password?</a>
+                <button class="login-button" onclick="getFormElelemets()">Sign In</button>
+            </form>
+        </div>
+
+        <!-- image right -->
+        <div class="login-overlay-container">
+            <div class="login-overlay">
+                <div class="login-overlay-panel login-overlay-left">
+                    <h1 class="login-h1">Welcome Back!</h1>
+                    <p class="login-p">To keep connected with us please login with your personal info</p>
+                    <button class="login-button ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="login-overlay-panel login-overlay-right">
+                    <h1 class="login-h1" style="color:#FF4B2B">BWORk, EDMS!</h1>
+                    <p class="login-p">Enter your personal details and start journey with us</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // working here 
+        function getFormElelemets() {
+            var myForm = document.getElementById("formID");
+            for (var i = 0; i < myForm.elements.length; i++) {
+                if (myForm.elements[i].tagName.toLowerCase() == 'input') {
+                    var spanEle = document.getElementById(myForm.elements[i].id + "_");
+                    if (hasValue(myForm.elements[i]) == false) {
+                        validation(myForm.elements[i], spanEle);
+                    } else {
+                        e.classList.add("login-input-validation");
+                        spanEle.style.display = "none";
+                    }
+                }
+            }
+        }
+
+        function hasValue(e) {
+            var value = e.value;
+            if (value == null || value == '' || value == 0) {
+                return false;
+            } else {
+                true;
+            }
+        }
+
+        function validation(e, s) {
+            e.classList.remove();
+            e.classList.add("login-input-validation");
+            s.style.display = "block";
+        }
+    </script>
+</body>
+
+
+</html>

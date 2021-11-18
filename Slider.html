@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height: 50%;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .allPic{
+            display: inline-flex;
+            position: relative;
+            animation: changeColor 5s infinite;
+        }
+        .pic1{
+            height: 300px;
+            width: 80%;
+            background-color: red;
+        }
+        .pic2{
+            height: 300px;
+            width: 80%;
+            background-color: blue;
+        }
+        .pic3{ 
+            height: 300px;
+            width: 80%;
+            background-color: pink;
+        }
+        .pic4{
+            height: 300px;
+            width: 80%;
+            background-color: green;
+        }
+
+       @keyframes changeColor {
+           0%{right: 0;}
+           30%{right: 80%;}
+           60%{right: 160%;}
+           100%{right: 240%;}
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="allPic">
+            <li class="pic1">
+                <img src="Content/1.jpg" alt="">
+            </li>
+            <li class="pic2">
+                <img src="Content/2.jpg" alt="">
+            </li>
+            <li class="pic3">
+                <img src="Content/3.jpg" alt="">
+            </li>
+            <li class="pic4">
+                <img src="Content/4.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

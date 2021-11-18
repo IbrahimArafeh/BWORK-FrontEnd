@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dataTable.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="modalBtn" class="button">Add New Member</button>
+    <hr>
+    <br>
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="closeBtn">&times;</span>
+                <h2>Add new member</h2>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="event.preventDefault();onformSubmit();" autocomplete="off">
+
+                    <div>
+                        <label>Full name</label>
+                        <input id="fullname" type="text" name="fullname">
+                        <small class="validation-error hide" id="fullNameValidationError">This field is
+                            required.</small>
+                    </div>
+
+                    <div>
+                        <label>Emp Code</label>
+                        <input id="empcode" type="text" name="empcode">
+                    </div>
+
+                    <div>
+                        <label>Salary</label>
+                        <input id="salary" type="number" name="salary">
+                    </div>
+
+                    <div>
+                        <label>City</label>
+                        <input id="city" type="text" name="city">
+                    </div>
+
+                    <div class="form-action-buttons">
+                        <input id="btn_submit" type="submit" value="sumbit">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <h3>Thank you for register</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="tblContainer">
+        <table id="empList" class="list">
+            <thead class="tblHeader">
+                <tr>
+                    <td>Full Name</td>
+                    <td>EMP Code</td>
+                    <td>Salary</td>
+                    <td>City</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+
+    <div id="progressBarUploading" class="progressContainer">
+        <div class="progress-bar">
+        </div>
+    </div>
+    <button style="margin: 1rem;" onclick="uploadFiles()">Upload files</button>
+
+    <div class="progress">
+        <div class="progress__fill">
+        </div>
+        <span class="progress__text">
+            0%
+        </span>
+    </div>
+    <button style="margin: 1rem;" onclick="increaseBar()">Upload ALL Files</button>
+    
+    <script type="text/javascript" src="js/dataTable.js"></script>
+</body>
+
+</html>
