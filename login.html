@@ -18,9 +18,9 @@
                 <br>
                 <h1 class="login-h1">Sign in</h1>
                 <br>
-                <input id="loginUsrename" type="text" class="login-input" placeholder="Username" />
+                <input id="loginUsrename" type="text" class="login-input" placeholder="Username" autocomplete="off" />
                 <span role="alert" id="loginUsrename_" class="login-span-error">Please enter Username</span>
-                <input id="loginPassword" type="password" class="login-input" placeholder="Password" />
+                <input id="loginPassword" type="password" class="login-input" placeholder="Password" autocomplete="off" />
                 <span role="alert" id="loginPassword_" class="login-span-error">Please enter Password</span>
                 <a href="#" class="login-a">Forgot your password?</a>
                 <button class="login-button" onclick="getFormElelemets()">Sign In</button>
@@ -44,7 +44,7 @@
 
     </div>
     <script>
-        // working here 
+        // Checking on form fields
         function getFormElelemets() {
             var myForm = document.getElementById("formID");
             for (var i = 0; i < myForm.elements.length; i++) {
@@ -53,7 +53,8 @@
                     if (hasValue(myForm.elements[i]) == false) {
                         validation(myForm.elements[i], spanEle);
                     } else {
-                        e.classList.add("login-input-validation");
+                        myForm.elements[i].classList.remove("login-input-validation");
+                        myForm.elements[i].classList.add("login-input");
                         spanEle.style.display = "none";
                     }
                 }
