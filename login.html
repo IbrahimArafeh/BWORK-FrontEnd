@@ -22,7 +22,7 @@
                 <span role="alert" id="loginUsrename_" class="login-span-error">Please enter Username</span>
                 <input id="loginPassword" type="password" class="login-input" placeholder="Password" autocomplete="off" />
                 <span role="alert" id="loginPassword_" class="login-span-error">Please enter Password</span>
-                <a href="#" class="login-a">Forgot your password?</a>
+                <a href="#" class="login-a" onclick="getFormElelemets()">Force Logout?</a>
                 <button class="login-button" onclick="getFormElelemets()">Sign In</button>
             </form>
         </div>
@@ -43,40 +43,7 @@
         </div>
 
     </div>
-    <script>
-        // Checking on form fields
-        function getFormElelemets() {
-            var myForm = document.getElementById("formID");
-            for (var i = 0; i < myForm.elements.length; i++) {
-                if (myForm.elements[i].tagName.toLowerCase() == 'input') {
-                    var spanEle = document.getElementById(myForm.elements[i].id + "_");
-                    if (hasValue(myForm.elements[i]) == false) {
-                        validation(myForm.elements[i], spanEle);
-                    } else {
-                        myForm.elements[i].classList.remove("login-input-validation");
-                        myForm.elements[i].classList.add("login-input");
-                        spanEle.style.display = "none";
-                    }
-                }
-            }
-        }
-
-        function hasValue(e) {
-            var value = e.value;
-            if (value == null || value == '' || value == 0) {
-                return false;
-            } else {
-                true;
-            }
-        }
-
-        function validation(e, s) {
-            e.classList.remove();
-            e.classList.add("login-input-validation");
-            s.style.display = "block";
-        }
-    </script>
 </body>
-
+<script type="text/javascript" src="js/login.js"></script>
 
 </html>
