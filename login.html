@@ -13,7 +13,7 @@
     <h2 class="login-h2">PRIMA SYSTEM L.L.C</h2>
     <div class="login-container" id="container">
         <div class="login-form-container login-sign-in-container">
-            <form id="formID" class="login-form" name="myform">
+            <form id="formID" class="login-form" onsubmit="checkFormElelemets(); return false">
                 <img class="login-logo" src="Content/beeLogo.png">
                 <br>
                 <h1 class="login-h1">Sign in</h1>
@@ -23,7 +23,7 @@
                 <input id="loginPassword" type="password" class="login-input" placeholder="Password" autocomplete="off" />
                 <span role="alert" id="loginPassword_" class="login-span-error">Please enter Password</span>
                 <a href="#" class="login-a">Forgot your password?</a>
-                <button class="login-button" onclick="getFormElelemets()">Sign In</button>
+                <button class="login-button">Sign In</button>
             </form>
         </div>
 
@@ -45,7 +45,7 @@
     </div>
     <script>
         // Checking on form fields
-        function getFormElelemets() {
+        function checkFormElelemets() {
             var myForm = document.getElementById("formID");
             for (var i = 0; i < myForm.elements.length; i++) {
                 if (myForm.elements[i].tagName.toLowerCase() == 'input') {
@@ -71,7 +71,7 @@
         }
 
         function validation(e, s) {
-            e.classList.remove();
+            e.classList.remove("login-input");
             e.classList.add("login-input-validation");
             s.style.display = "block";
         }
