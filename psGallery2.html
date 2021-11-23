@@ -1,78 +1,196 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>CSS Photo Gallery</title>
-    <link rel="stylesheet" href="css/photoGalleryStyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/psGallery.css">
+    <style>
+        .pic-thumb-view {
+            overflow: hidden;
+            max-height: 350px;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow-x: scroll;
+        }
+        
+        .pic-thumbnail-list {
+            /* display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 10px 10px 10px; */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 11px 10px 10px;
+        }
+        
+        .thumbnail {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .info-container {
+            position: relative;
+            height: 114px;
+            box-shadow: 0px 0px 50px 10px rgb(0 0 0 / 38%);
+            transition: all 200ms ease-out;
+        }
+        
+        .info-container:hover {
+            box-shadow: 0px 0px 100px #000000;
+            z-index: 2;
+            transition: all 300ms ease-in;
+            transform: scale(1.08);
+        }
+        
+        .info-container:active {
+            transform: translateZ(2px);
+            box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.38);
+        }
+        
+        img {
+            max-width: 120px;
+            max-height: 120px;
+        }
+        
+        .figureImg {
+            height: 450px;
+            width: 600px;
+            max-width: 100%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .pagi-container {
+            /* width: 640px; */
+            max-width: 100%;
+            text-align: center;
+            border: 2px solid rgb(75, 41, 160);
+            -webkit-border-radius: 0px 0px 8px 8px;
+            -moz-border-radius: 0px 0px 8px 8px;
+            border-radius: 0px 0px 8px 8px;
+            overflow: hidden;
+            /* padding: 10px; */
+            margin: 12px;
+        }
+        
+        .gallery-container {
+            /* width: 640px; */
+            width: 60%;
+            border: 2px solid rgb(10, 108, 175);
+            -webkit-border-radius: 5px 5px 10px 10px;
+            -moz-border-radius: 5px 5px 10px 10px;
+            border-radius: 5px 5px 10px 10px;
+            margin: 10px auto;
+            padding: 0px;
+            display: table;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 0 20px #119;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="menu">
-        <ul>
-            <li data-pattern="1">Default</li>
-            <li data-pattern="2">From Left</li>
-            <li data-pattern="3">From Right</li>
-            <li data-pattern="4">From Top</li>
-            <li data-pattern="5">From Bottom</li>
-            <li data-pattern="6">From Top-Right</li>
-            <li data-pattern="7">Zoom In</li>
-        </ul>
-    </div>
-
-    <!-- Container for Photo Gallery -->
     <div class="gallery-container">
-        <h2>Photo Gallery</h2>
+        <h2>BWORK Viewer</h2>
         <div class="pagi-container">
-            <!-- Following DIV plays an Important Role for Hiding the Bottom Transition of Images overlapping the Pagination Thumbnail images. -->
-            <div id="background"></div>
-
-            <input type="radio" name="input_thumb" id="id1" />
-            <label for="id1">
-					<img src="Content/5.jpg" alt="Image1"/>					
-				</label>
-            <img src="Content/5.jpg" alt="Image2">
-
-            <input type="radio" name="input_thumb" id="id2" />
-            <label for="id2">
-					<img src="Content/6.jpg" alt="Image2"/>
-				</label>
-            <img src="Content/6.jpg" alt="Image2">
-
-            <input type="radio" name="input_thumb" id="id2" />
-            <label for="id2">
-					<img src="Content/7.jpg" alt="Image2"/>
-				</label>
-            <img src="Content/7.jpg" alt="Image2">
-
-            <input type="radio" name="input_thumb" id="id2" />
-            <label for="id2">
-					<img src="Content/8.jpg" alt="Image2"/>
-				</label>
-            <img src="Content/8.jpg" alt="Image2">
-
+            <figure>
+                <img src="Content/1.jpg" alt="" id="mainImg" class="figureImg">
+            </figure>
         </div>
+        <!-- <div class="thumb_img_list">
+            <ul>
+                <li><img src="content/9.png" alt="" id="thumb1"></li>
+                <li><img src="content/8.jpg" alt="" id="thumb2"></li>
+                <li><img src="content/7.jpg" alt="" id="thumb3"></li>
+                <li><img src="content/6.jpg" alt="" id="thumb4"></li>
+                <li><img src="content/1.jpg" alt="" id="thumb5"></li>
+                <li><img src="content/city-skyline-wallpapers-008.jpg" alt="" id="thumb3"></li>
+                <li><img src="content/nut1.jpg" alt="" id="thumb4"></li>
+                <li><img src="content/beeLogo.png" alt="" id="thumb5"></li>
+            </ul>
+        </div> -->
+
+        <div class="pic-thumb-view">
+            <div class="pic-thumbnail-list">
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="http://4.bp.blogspot.com/-eIFYvodclHQ/UbNxYtXXGMI/AAAAAAAAIl8/UkWtmBiNlss/s1600/Dark+rain+hd.jpg" alt="picture" class="info-thumb-pic">
+
+                        </div>
+                    </a>
+                </div>
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="http://www.goodwp.com/images/201104/goodwp.com_17530.jpg" alt="picture" class="info-thumb-pic">
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/beeLogo.png" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/nut1.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/8.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/6.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
     </div>
-
-    <!-- Loading JavaScript Codes. -->
-    <script src="js/jquery-3.6.0.js"></script>
-    <script>
-        // 
-
-        jQuery(document).ready(function($) {
-
-            $('.pagi-container>img').toggleClass('DefaultBigStyle1');
-            $('.pagi-container label:nth-child(3)>img').trigger('click'); // This is to set initial Photo in the Frame.
-            $('.menu ul li').on('click', function() {
-                $('.menu ul li').removeClass();
-                $(this).addClass('menuSelected');
-                index = $(this).data('pattern');
-                console.log('Pattern : ' + index + ' is Selected..!!');
-                $('.pagi-container>img').removeClass();
-                $('.pagi-container>img').addClass('DefaultBigStyle' + index); // Applying the CSS classes based on User's choice of transition styles.
-            });
-            $('.menu ul li:nth-child(1)').trigger('click');
-        });
-    </script>
+    <script type="text/javascript" src="js/psGallery.js"></script>
 </body>
 
 </html>
