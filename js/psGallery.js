@@ -12,6 +12,9 @@ var thumb3Src = document.getElementById('thumb3').src;
 var thmub4 = document.getElementById('thumb4');
 var thumb4Src = document.getElementById('thumb4').src;
 
+var thmub5 = document.getElementById('thumb5');
+var thumb5Src = document.getElementById('thumb5').src;
+
 thumb1.addEventListener("click", function() {
     mainImg.src = thumb1Src
 })
@@ -24,4 +27,7 @@ thumb3.addEventListener("click", function() {
 })
 thumb4.addEventListener("click", function() {
     mainImg.src = thumb4Src
+})
+thumb5.addEventListener("click", function() {
+    mainImg.src = thumb5Src
 })
