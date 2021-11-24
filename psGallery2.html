@@ -6,162 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/psGallery.css">
-    <style>
-        .pic-thumb-view {
-            overflow: hidden;
-            max-height: 350px;
-            max-width: 801px;
-            white-space: nowrap;
-            overflow-x: scroll;
-            margin: 8px;
-            border-radius: 7px;
-        }
-        
-        .pic-thumbnail-list {
-            /* display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 10px 10px 10px 10px; */
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding: 10px 11px 10px 10px;
-        }
-        
-        .thumbnail {
-            flex: 0 0 auto;
-            margin-right: 15px;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .info-container {
-            position: relative;
-            height: 120px;
-            box-shadow: 0px 0px 50px 10px rgb(0 0 0 / 38%);
-            transition: all 200ms ease-out;
-            width: 120px;
-        }
-        
-        .info-container:hover {
-            box-shadow: 0px 0px 100px #000000;
-            z-index: 2;
-            transition: all 300ms ease-in;
-            transform: scale(1.08);
-        }
-        
-        .info-container:active {
-            transform: translateZ(2px);
-            box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.38);
-        }
-        
-        img {
-            max-width: 120px;
-            max-height: 120px;
-        }
-        
-        .figureImg {
-            height: 450px;
-            width: 600px;
-            max-width: 100%;
-            max-height: 90%;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .pagi-container {
-            /* width: 640px; */
-            max-width: 100%;
-            text-align: center;
-            border: 2px solid rgb(75, 41, 160);
-            -webkit-border-radius: 0px 0px 8px 8px;
-            -moz-border-radius: 0px 0px 8px 8px;
-            border-radius: 0px 0px 8px 8px;
-            overflow: hidden;
-            /* padding: 10px; */
-            margin: 12px;
-            /*  */
-            display: flex;
-            justify-content: space-evenly;
-            align-content: flex-start;
-            flex-direction: column;
-            left: 86px;
-        }
-        
-        .gallery-container {
-            /* width: 640px; */
-            width: 60%;
-            border: 2px solid rgb(10, 108, 175);
-            -webkit-border-radius: 5px 5px 10px 10px;
-            -moz-border-radius: 5px 5px 10px 10px;
-            border-radius: 5px 5px 10px 10px;
-            margin: 10px auto;
-            padding: 0px;
-            display: table;
-            position: relative;
-            text-align: center;
-            box-shadow: 0 0 20px #119;
-        }
-        
-         ::-webkit-scrollbar {
-            height: 18px;
-            /* height of horizontal scrollbar ← You're missing this */
-            width: 4px;
-            /* width of vertical scrollbar */
-            border: 1px solid #d5d5d5;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/psGallery2.css">
 </head>
 
 <body>
     <div class="gallery-container">
         <h2>BWORK Viewer</h2>
         <div class="pagi-container">
-            <figure>
-                <img src="Content/1.jpg" alt="" id="mainImg" class="figureImg">
+            <figure style="display: flex; justify-content: center;">
+                <img src="Content/9.png" alt="" id="mainImg" class="figureImg">
             </figure>
         </div>
-        <!-- <div class="thumb_img_list">
-            <ul>
-                <li><img src="content/9.png" alt="" id="thumb1"></li>
-                <li><img src="content/8.jpg" alt="" id="thumb2"></li>
-                <li><img src="content/7.jpg" alt="" id="thumb3"></li>
-                <li><img src="content/6.jpg" alt="" id="thumb4"></li>
-                <li><img src="content/1.jpg" alt="" id="thumb5"></li>
-                <li><img src="content/city-skyline-wallpapers-008.jpg" alt="" id="thumb3"></li>
-                <li><img src="content/nut1.jpg" alt="" id="thumb4"></li>
-                <li><img src="content/beeLogo.png" alt="" id="thumb5"></li>
-            </ul>
-        </div> -->
 
         <div class="pic-thumb-view">
             <div class="pic-thumbnail-list">
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="http://4.bp.blogspot.com/-eIFYvodclHQ/UbNxYtXXGMI/AAAAAAAAIl8/UkWtmBiNlss/s1600/Dark+rain+hd.jpg" alt="picture" class="info-thumb-pic">
-
+                            <img src="http://4.bp.blogspot.com/-eIFYvodclHQ/UbNxYtXXGMI/AAAAAAAAIl8/UkWtmBiNlss/s1600/Dark+rain+hd.jpg" alt="picture" class="info-thumb-pic" id="thumb1">
                         </div>
                     </a>
                 </div>
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="http://www.goodwp.com/images/201104/goodwp.com_17530.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="http://www.goodwp.com/images/201104/goodwp.com_17530.jpg" alt="picture" class="info-thumb-pic" id="thumb2">
 
-                        </div>
-                    </a>
-                </div>
-
-                <div class="thumbnail">
-                    <a href="#">
-                        <div class="info-container">
-                            <img src="Content/beeLogo.png" alt="picture" class="info-thumb-pic">
                         </div>
                     </a>
                 </div>
@@ -169,7 +39,7 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/nut1.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/beeLogo.png" alt="picture" class="info-thumb-pic" id="thumb3">
                         </div>
                     </a>
                 </div>
@@ -177,7 +47,7 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/8.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/nut1.jpg" alt="picture" class="info-thumb-pic" id="thumb4">
                         </div>
                     </a>
                 </div>
@@ -185,7 +55,7 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/6.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/8.jpg" alt="picture" class="info-thumb-pic" id="thumb5">
                         </div>
                     </a>
                 </div>
@@ -193,7 +63,7 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/02.jpg" alt="picture" class="info-thumb-pic" id="thumb6">
                         </div>
                     </a>
                 </div>
@@ -201,7 +71,7 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/9.png" alt="picture" class="info-thumb-pic" id="thumb7">
                         </div>
                     </a>
                 </div>
@@ -209,19 +79,10 @@
                 <div class="thumbnail">
                     <a href="#">
                         <div class="info-container">
-                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                            <img src="Content/city-skyline-wallpapers-008.jpg" alt="picture" class="info-thumb-pic" id="thumb8">
                         </div>
                     </a>
                 </div>
-
-                <div class="thumbnail">
-                    <a href="#">
-                        <div class="info-container">
-                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
-                        </div>
-                    </a>
-                </div>
-
 
             </div>
         </div>
