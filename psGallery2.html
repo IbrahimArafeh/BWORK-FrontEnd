@@ -11,9 +11,11 @@
         .pic-thumb-view {
             overflow: hidden;
             max-height: 350px;
-            max-width: 100%;
+            max-width: 801px;
             white-space: nowrap;
             overflow-x: scroll;
+            margin: 8px;
+            border-radius: 7px;
         }
         
         .pic-thumbnail-list {
@@ -26,10 +28,7 @@
             padding: 10px 10px 10px 10px; */
             display: flex;
             flex-direction: row;
-            justify-content: center;
             flex-wrap: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
             padding: 10px 11px 10px 10px;
         }
         
@@ -42,9 +41,10 @@
         
         .info-container {
             position: relative;
-            height: 114px;
+            height: 120px;
             box-shadow: 0px 0px 50px 10px rgb(0 0 0 / 38%);
             transition: all 200ms ease-out;
+            width: 120px;
         }
         
         .info-container:hover {
@@ -84,6 +84,12 @@
             overflow: hidden;
             /* padding: 10px; */
             margin: 12px;
+            /*  */
+            display: flex;
+            justify-content: space-evenly;
+            align-content: flex-start;
+            flex-direction: column;
+            left: 86px;
         }
         
         .gallery-container {
@@ -99,6 +105,15 @@
             position: relative;
             text-align: center;
             box-shadow: 0 0 20px #119;
+        }
+        
+         ::-webkit-scrollbar {
+            height: 18px;
+            /* height of horizontal scrollbar ← You're missing this */
+            width: 4px;
+            /* width of vertical scrollbar */
+            border: 1px solid #d5d5d5;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -171,6 +186,30 @@
                     <a href="#">
                         <div class="info-container">
                             <img src="Content/6.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="thumbnail">
+                    <a href="#">
+                        <div class="info-container">
+                            <img src="Content/5.jpg" alt="picture" class="info-thumb-pic">
                         </div>
                     </a>
                 </div>
