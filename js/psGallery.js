@@ -1,51 +1,49 @@
-var mainImg = document.getElementById("mainImg");
+// Declaring variable array of images. You can put as many as you want.
+const myimages = ['9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg'];
 
-var thmub1 = document.getElementById('thumb1');
-var thumb1Src = document.getElementById('thumb1').src;
+const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
+const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
+const imageContainer = document.getElementById("mainImg"); // assigning variable for image container div
+var myimage = "9.png"; // Assigning initial value for the varibale to show on page loading
 
-var thmub2 = document.getElementById('thumb2');
-var thumb2Src = document.getElementById('thumb2').src;
+var counter = 0;
+prevBtn.addEventListener("click", function() {
+    if (counter > 0 && counter < myimages.length) {
+        counter--;
+        myimage = myimages[counter];
+        // imageContainer.innerHTML = '<img src="Content/' + myimage + '" />';
+        imageContainer.src = "Content/" + myimage;
+    }
+});
 
-var thmub3 = document.getElementById('thumb3');
-var thumb3Src = document.getElementById('thumb3').src;
+nextBtn.addEventListener("click", function() {
+    if (counter < myimages.length - 1) {
+        counter++;
+        myimage = myimages[counter];
+        // imageContainer.innerHTML = '<img src="Content/' + myimage + '" />';
+        imageContainer.src = "Content/" + myimage;
+    }
+});
 
-var thmub4 = document.getElementById('thumb4');
-var thumb4Src = document.getElementById('thumb4').src;
+function addThumbImage() {
+    var picThumbList = document.getElementById('thumbnailList');
 
-var thmub5 = document.getElementById('thumb5');
-var thumb5Src = document.getElementById('thumb5').src;
-
-var thmub6 = document.getElementById('thumb6');
-var thumb6Src = document.getElementById('thumb6').src;
-
-var thmub7 = document.getElementById('thumb7');
-var thumb7Src = document.getElementById('thumb7').src;
-
-var thmub8 = document.getElementById('thumb8');
-var thumb8Src = document.getElementById('thumb8').src;
-
-thumb1.addEventListener("click", function() {
-    mainImg.src = thumb1Src
-})
-
-thumb2.addEventListener("click", function() {
-    mainImg.src = thumb2Src
-})
-thumb3.addEventListener("click", function() {
-    mainImg.src = thumb3Src
-})
-thumb4.addEventListener("click", function() {
-    mainImg.src = thumb4Src
-})
-thumb5.addEventListener("click", function() {
-    mainImg.src = thumb5Src
-})
-thumb6.addEventListener("click", function() {
-    mainImg.src = thumb6Src
-})
-thumb7.addEventListener("click", function() {
-    mainImg.src = thumb7Src
-})
-thumb8.addEventListener("click", function() {
-    mainImg.src = thumb8Src
-})
+    for (var i = 0; i < myimages.length; i++) {
+        var ThumbnailDiv = document.createElement('div');
+        ThumbnailDiv.setAttribute('class', 'thumbnail');
+        picThumbList.appendChild(ThumbnailDiv);
+        var TagaItem = document.createElement('a');
+        TagaItem.setAttribute('href', '#');
+        ThumbnailDiv.appendChild(TagaItem);
+        var imgDiv = document.createElement('div');
+        imgDiv.setAttribute('id', 'imgDiv');
+        imgDiv.setAttribute('class', 'info-container');
+        TagaItem.appendChild(imgDiv);
+        var imgTag = document.createElement('img');
+        imgTag.setAttribute('alt', 'picture');
+        imgTag.setAttribute('class', 'info-thumb-pic');
+        imgTag.setAttribute('id', 'Imagethumb' + i);
+        imgTag.src = 'Content/' + myimages[i];
+        imgDiv.appendChild(imgTag);
+    }
+}
