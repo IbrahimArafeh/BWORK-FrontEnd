@@ -7,6 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/psGallery2.css">
+
+    <style>
+        #p-10-s-i-s-prev-btn,
+        #p-10-s-i-s-next-btn {
+            width: 50px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            /* color: aqua; */
+            color: white;
+        }
+        
+        #p-10-s-i-s-prev-btn:hover,
+        #p-10-s-i-s-next-btn:hover {
+            color: coral;
+            transition: all 1s;
+            background-color: #0e5b68;
+            box-shadow: 0px 0px 50px 10px rgb(0 0 0 / 38%);
+            /* transition: all 200ms ease-out; */
+            box-shadow: 0 0 20px #119;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,13 +40,16 @@
         <h2>BWORK Viewer</h2>
         <div class="pagi-container">
             <figure style="display: flex; justify-content: center;">
+                <div id="p-10-s-i-s-prev-btn"> &#60; </div>
                 <img src="Content/9.png" alt="" id="mainImg" class="figureImg">
+                <div id="p-10-s-i-s-next-btn">&#62; </div>
             </figure>
+            <div style="display: inline-block;">
+
+            </div>
         </div>
-        <div style="display: inline-block;">
-            <button>test</button>
-            <button>test1</button>
-        </div>
+
+
         <div class="pic-thumb-view">
             <div class="pic-thumbnail-list">
                 <div class="thumbnail">
