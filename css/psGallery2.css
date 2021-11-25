@@ -64,7 +64,7 @@ img {
     margin: 7px;
 }
 
-figure img {
+.figureImg {
     display: block;
     max-width: 100%;
     max-height: 90%;
