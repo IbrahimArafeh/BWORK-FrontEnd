@@ -25,6 +25,7 @@ nextBtn.addEventListener("click", function() {
     }
 });
 
+//Add Image List 
 function addThumbImage() {
     var picThumbList = document.getElementById('thumbnailList');
 
@@ -34,6 +35,7 @@ function addThumbImage() {
         picThumbList.appendChild(ThumbnailDiv);
         var TagaItem = document.createElement('a');
         TagaItem.setAttribute('href', '#');
+        TagaItem.setAttribute('onclick', 'chooseImage(this)');
         ThumbnailDiv.appendChild(TagaItem);
         var imgDiv = document.createElement('div');
         imgDiv.setAttribute('id', 'imgDiv');
@@ -46,4 +48,8 @@ function addThumbImage() {
         imgTag.src = 'Content/' + myimages[i];
         imgDiv.appendChild(imgTag);
     }
+}
+
+function chooseImage(e) {
+
 }
