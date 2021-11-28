@@ -1,5 +1,5 @@
 // Declaring variable array of images. You can put as many as you want.
-const myimages = ['nut1.jpg', '9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg'];
+const myimages = ['nut1.jpg', '9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg', 'nut1.jpg', '9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg'];
 
 const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
 const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
