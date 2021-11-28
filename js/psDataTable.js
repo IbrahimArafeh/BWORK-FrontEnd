@@ -246,7 +246,7 @@ function addRow(e) {
     btnUpdate.setAttribute('class', 'ps-btn-success');
 
     // add button's "onclick" event.
-    btnUpdate.setAttribute('onclick', 'updateRow(this)');
+    btnUpdate.setAttribute('onclick', 'updateDataRow(this)');
     td.appendChild(btnUpdate);
 
     for (var c = arrHead.length - 1; c >= 0; c--) {
