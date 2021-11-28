@@ -1,29 +1,35 @@
 // Declaring variable array of images. You can put as many as you want.
-const myimages = ['nut1.jpg', '9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg', 'nut1.jpg', '9.png', 'nut1.jpg', '8.jpg', '02.jpg', '9.png', '9.png', '8.jpg', '02.jpg'];
-
+const myimages = ['t1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg'];
 const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
 const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
 const imageContainer = document.getElementById("mainImg"); // assigning variable for image container div
 var myimage = "9.png"; // Assigning initial value for the varibale to show on page loading
 
-var counter = 0;
+// Previous Image button
 prevBtn.addEventListener("click", function() {
-    if (counter > 0 && counter < myimages.length) {
-        counter--;
-        myimage = myimages[counter];
-        // imageContainer.innerHTML = '<img src="Content/' + myimage + '" />';
-        imageContainer.src = "Content/" + myimage;
+    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex > 0) {
+        arrayIndex--;
+        imageContainer.src = "Content/" + myimages[arrayIndex]
     }
 });
-
+// Next Image button
 nextBtn.addEventListener("click", function() {
-    if (counter < myimages.length - 1) {
-        counter++;
-        myimage = myimages[counter];
-        // imageContainer.innerHTML = '<img src="Content/' + myimage + '" />';
-        imageContainer.src = "Content/" + myimage;
+    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex < myimages.length - 1) {
+        arrayIndex++;
+        imageContainer.src = "Content/" + myimages[arrayIndex]
     }
 });
+// search about string into array
+function searchStringInArray(str, strArray) {
+    for (var j = 0; j < strArray.length; j++) {
+        if (strArray[j].match(str)) return j;
+    }
+    return -1;
+}
 
 //Add Image List 
 function addThumbImage() {
