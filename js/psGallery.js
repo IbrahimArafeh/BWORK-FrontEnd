@@ -32,15 +32,14 @@ function searchStringInArray(str, strArray) {
     return -1;
 }
 
-thumbNailList.addEventListener('wheel', (event) => {
-    alert('X: ' + event.deltaX + ' , Y: ' + event.deltaY + ' , Z: ' + event.deltaZ + ' , Client X: ' + event.clientX);
-    event.preventDefault();
+// scrollbar event not working yet
+// thumbNailList.addEventListener('wheel', (event) => {
+//     event.preventDefault();
+//     thumbNailList.scrollBy({
+//         left: event.deltaY < 0 ? 100 : -100,
+//     });
+// });
 
-    thumbNailList.scrollBy({
-        left: event.deltaY < 0 ? -100 : 100,
-
-    });
-});
 
 
 //Add Image List 
