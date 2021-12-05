@@ -6,29 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/psGallery.css">
+    <link rel="stylesheet" type="text/css" href="css/psGallery2.css">
+
+    <style>
+
+    </style>
 </head>
 
-<body>
+<body onload="addThumbImage()">
     <div class="gallery-container">
         <h2>BWORK Viewer</h2>
         <div class="pagi-container">
-            <figure>
-                <img src="Content/1.jpg" alt="" id="mainImg">
+            <figure style="display: flex; justify-content: center;">
+                <div id="ImageViewer-Prev-btn" class="ImageViewer-Prev"> &#60; </div>
+                <img src="" alt="" id="mainImg" class="figureImg">
+                <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
             </figure>
         </div>
-        <div class="thumb_img_list">
-            <ul>
-                <li><img src="content/9.png" alt="" id="thumb1"></li>
-                <li><img src="content/8.jpg" alt="" id="thumb2"></li>
-                <li><img src="content/7.jpg" alt="" id="thumb3"></li>
-                <li><img src="content/6.jpg" alt="" id="thumb4"></li>
-                <li><img src="content/1.jpg" alt="" id="thumb5"></li>
-                <li><img src="content/city-skyline-wallpapers-008.jpg" alt="" id="thumb3"></li>
-                <li><img src="content/nut1.jpg" alt="" id="thumb4"></li>
-                <li><img src="content/beeLogo.png" alt="" id="thumb5"></li>
-            </ul>
+        <div class="imageButtons">
+            <button>Rotate Left</button>
+            <button>Rotate Right</button>
         </div>
+        <div id="thumbListView" class="pic-thumb-view">
+            <div id='thumbnailList' class="pic-thumbnail-list">
+            </div>
+        </div>
+
+
+
+
+
     </div>
     <script type="text/javascript" src="js/psGallery.js"></script>
 </body>
