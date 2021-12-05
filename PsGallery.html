@@ -7,9 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/psGallery.css">
-
     <style>
-
+        .rot-left-btn {
+            width: 38px;
+            height: 37px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .rot-left-btn:hover {
+            background-color: #263d75;
+            transform: scale(1.09);
+        }
     </style>
 </head>
 
@@ -23,12 +32,12 @@
                 <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
             </figure>
         </div>
-        <div class="imageButtons">
-            <button>Rotate Left</button>
-            <button>Rotate Right</button>
+        <div>
+            <img src="Content/icon/rot-right.png" alt="" class="rot-left-btn">
+            <img src="Content/icon/rotate-image-icon.png" alt="" class="rot-left-btn">
         </div>
-        <div id="thumbListView" class="pic-thumb-view">
-            <div id='thumbnailList' class="pic-thumbnail-list">
+        <div id="thumbListView " class="pic-thumb-view ">
+            <div id='thumbnailList' class="pic-thumbnail-list ">
             </div>
         </div>
 
@@ -37,7 +46,7 @@
 
 
     </div>
-    <script type="text/javascript" src="js/psGallery.js"></script>
+    <script type="text/javascript " src="js/psGallery.js "></script>
 </body>
 
 </html>
