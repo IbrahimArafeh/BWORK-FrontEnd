@@ -1,5 +1,5 @@
 // Declaring variable array of images. You can put as many as you want.
-const myimages = ['t1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg'];
+const myimages = ['t1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg', 't1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg'];
 const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
 const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
 const imageContainer = document.getElementById("mainImg"); // assigning variable for image container div
@@ -13,7 +13,10 @@ prevBtn.addEventListener("click", function() {
     if (arrayIndex > 0) {
         arrayIndex--;
         imageContainer.src = "Content/" + myimages[arrayIndex]
+    } else if (arrayIndex == 0) {
+        imageContainer.src = "Content/" + myimages[myimages.length - 1]
     }
+
 });
 // Next Image button
 nextBtn.addEventListener("click", function() {
@@ -22,7 +25,10 @@ nextBtn.addEventListener("click", function() {
     if (arrayIndex < myimages.length - 1) {
         arrayIndex++;
         imageContainer.src = "Content/" + myimages[arrayIndex]
+    } else if (arrayIndex = myimages.length - 1) {
+        imageContainer.src = "Content/" + myimages[0]
     }
+
 });
 // search about string into array
 function searchStringInArray(str, strArray) {
@@ -31,15 +37,6 @@ function searchStringInArray(str, strArray) {
     }
     return -1;
 }
-
-// scrollbar event not working yet
-// thumbNailList.addEventListener('wheel', (event) => {
-//     event.preventDefault();
-//     thumbNailList.scrollBy({
-//         left: event.deltaY < 0 ? 100 : -100,
-//     });
-// });
-
 
 
 //Add Image List 
