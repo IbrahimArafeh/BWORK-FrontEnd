@@ -87,7 +87,7 @@ function checkIMG(e) {
 
 // image zoom
 
-var scale = 1,
+var scale = 3,
     panning = false,
     pointX = 0,
     pointY = 0,
@@ -126,8 +126,8 @@ zoom.onmousemove = function(e) {
 
 zoom.onwheel = function(e) {
     e.preventDefault();
-    xpoint = pointX;
-    xpoint = pointY;
+    var xpoint = pointX * 1;
+    var ypoint = pointY * 1;
 
     var xs = (e.clientX - pointX) / scale,
         ys = (e.clientY - pointY) / scale,
