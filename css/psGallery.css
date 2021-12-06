@@ -374,3 +374,15 @@ li:hover {
         border-radius: 7px;
     }
 }
+
+.rot-left-btn {
+    width: 38px;
+    height: 37px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.rot-left-btn:hover {
+    background-color: #263d75;
+    transform: scale(1.09);
+}

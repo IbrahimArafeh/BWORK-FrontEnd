@@ -8,17 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/psGallery.css">
     <style>
-        .rot-left-btn {
-            width: 38px;
-            height: 37px;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-        
-        .rot-left-btn:hover {
-            background-color: #263d75;
-            transform: scale(1.09);
-        }
+
     </style>
 </head>
 
@@ -26,25 +16,24 @@
     <div class="gallery-container">
         <h2>BWORK Viewer</h2>
         <div class="pagi-container">
-            <figure style="display: flex; justify-content: center;">
+            <figure style="display: flex; justify-content: center; overflow: hidden;">
                 <div id="ImageViewer-Prev-btn" class="ImageViewer-Prev"> &#60; </div>
-                <img src="" alt="" id="mainImg" class="figureImg">
+                <div style="overflow: hidden; overflow: hidden; border:5px solid red;">
+                    <div id="imgDiv" class="imgDiv">
+                        <img src="" alt="imgDiv" id="mainImg" class="figureImg">
+                    </div>
+                </div>
                 <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
             </figure>
         </div>
         <div>
-            <img src="Content/icon/rot-right.png" alt="" class="rot-left-btn">
-            <img src="Content/icon/rotate-image-icon.png" alt="" class="rot-left-btn">
+            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn">
+            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn">
         </div>
         <div id="thumbListView " class="pic-thumb-view ">
             <div id='thumbnailList' class="pic-thumbnail-list ">
             </div>
         </div>
-
-
-
-
-
     </div>
     <script type="text/javascript " src="js/psGallery.js "></script>
 </body>
