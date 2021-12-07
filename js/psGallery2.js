@@ -102,25 +102,12 @@ function addThumbImage() {
     }
 
 }
-// check IMG tag info node and child node
-// function chooseImage(e) {
-//     if (checkIMG(e)) {
-//         var mainImg = document.getElementById('mainImg');
-//         mainImg.src = e.src;
-//         var imgDiv = document.getElementById('imageCanvas');
-//         imgDiv.style.transform = null;
-//         imageContainer.style.transform = null;
-//     } else {
-//         var childEle = e.childNodes[0];
-//         chooseImage(childEle);
-//         imageContainer.style.transform = null;
-//     }
-// }
 
 function fillMainImage(e) {
     if (checkIMG(e)) {
         var img = document.createElement("img");
         img.setAttribute('id', 'mainImg');
+        img.src = '';
         img.src = e.src;
         // load image        
         $(img).on('load', function() {
@@ -132,8 +119,6 @@ function fillMainImage(e) {
             });
             canvas.add(image);
         });
-
-
     } else {
         var childEle = e.childNodes[0];
         fillMainImage(childEle);
