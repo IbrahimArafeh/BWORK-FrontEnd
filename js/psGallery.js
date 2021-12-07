@@ -71,6 +71,8 @@ function chooseImage(e) {
     if (checkIMG(e)) {
         var mainImg = document.getElementById('mainImg');
         mainImg.src = e.src;
+        var imgDiv = document.getElementById('imgDiv');
+        imgDiv.style.transform = null;
     } else {
         var childEle = e.childNodes[0];
         chooseImage(childEle);
@@ -87,7 +89,7 @@ function checkIMG(e) {
 
 // image zoom
 
-var scale = 3,
+var scale = 5,
     panning = false,
     pointX = 0,
     pointY = 0,
@@ -126,15 +128,13 @@ zoom.onmousemove = function(e) {
 
 zoom.onwheel = function(e) {
     e.preventDefault();
-    var xpoint = pointX * 1;
-    var ypoint = pointY * 1;
 
     var xs = (e.clientX - pointX) / scale,
         ys = (e.clientY - pointY) / scale,
         delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
     (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-    pointX = e.clientX - xs * scale;
-    pointY = e.clientY - ys * scale;
+    // pointX = e.clientX - xs * scale;
+    // pointY = e.clientY - ys * scale;
 
     setTransform();
 }

@@ -79,6 +79,10 @@ body {
     animation: ImageViewer-animation 2s;
 }
 
+.figureImg:hover {
+    cursor: move;
+}
+
 .thumb_img_list {
     text-align: center;
 }
