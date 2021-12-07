@@ -89,7 +89,7 @@ function checkIMG(e) {
     }
 }
 
-// image zoom
+// ********  image zoom function start ********////
 
 var scale = 5,
     panning = false,
@@ -140,6 +140,8 @@ zoom.onwheel = function(e) {
 
     setTransform();
 }
+
+// ********  image zoom function End ********////
 
 function rotateLeft() {
     imageContainer.style.transform = "rotate(90deg)";

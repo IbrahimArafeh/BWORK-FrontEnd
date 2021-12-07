@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/psGallery.css">
+    <script type="text/javascript" src="js/fabric.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+    <style>
+        .rotate90 {
+            transform: rotate( 90deg);
+            -webkit-transform-origin-y: center;
+        }
+    </style>
+</head>
+
+<body onload="addThumbImage()">
+    <div class="gallery-container">
+        <h2>BWORK Viewer</h2>
+        <div class="pagi-container">
+            <figure style="display: flex; justify-content: center; overflow: hidden;">
+                <div id="ImageViewer-Prev-btn" class="ImageViewer-Prev"> &#60; </div>
+                <div style="overflow: hidden; overflow: hidden;">
+                    <!--  div id=imgDiv class=imgDiv 
+                         img id=mainImg alt='imgDiv' class=figureImg-->
+
+                    <canvas id="imageCanvas" width='600' height='335'>Your browser does not support HTML5 Canvas</canvas>
+                </div>
+                <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
+            </figure>
+        </div>
+        <div>
+            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn" onclick="rotateLeft()">
+            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn" onclick="rotateRight()">
+        </div>
+        <div id="thumbListView " class="pic-thumb-view ">
+            <div id='thumbnailList' class="pic-thumbnail-list ">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript " src="js/psGallery2.js "></script>
+    <script>
+    </script>
+</body>
+
+</html>
