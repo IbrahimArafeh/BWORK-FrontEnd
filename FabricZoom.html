@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/fabric.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+</head>
+<!--from w  w w . d  e  m  o 2 s  .co  m-->
+
+<body>
+    <canvas id="imageCanvas" width='800' height='600'>Your browser does not support HTML5 Canvas</canvas>
+    <script type='text/javascript'>
+        var img = document.createElement("img");
+        img.src = "https://st.motortrend.com/uploads/sites/5/2018/11/2019-Mazda3-hatch-profile.jpg";
+        var canvas = window._canvas = new fabric.Canvas("imageCanvas");
+        $(img).on('load', function() {
+            image = new fabric.Image(img, {
+                centeredRotation: true,
+                centeredScaling: true,
+                top: 0,
+                left: 0
+            });
+            canvas.add(image);
+        });
+        canvas.on("mouse:move", function(event) {
+            currentMouseY = Math.round(event.e.y - canvas._offset.top);
+            currentMouseX = Math.round(event.e.x - canvas._offset.left);
+        });
+
+        function zoom(delta, target) {
+            var factor = 0.8;
+            if (delta < 0) {
+                factor = 1 / factor;
+            }
+            // Zoom into the image.
+            image.setScaleX(image.getScaleX() * factor);
+            image.setScaleY(image.getScaleY() * factor);
+            // Calculate displacement of zooming position.
+            var dx = (currentMouseX - image.getLeft()) * (factor - 1),
+                dy = (currentMouseY - image.getTop()) * (factor - 1);
+            // Compensate for displacement.
+            image.setLeft(image.getLeft() - dx);
+            image.setTop(image.getTop() - dy);
+            canvas.renderAll();
+        }
+        $(canvas.wrapperEl).on("mousewheel", function(event) {
+            var target = canvas.findTarget(event);
+            if (target) {
+                var delta = event.originalEvent.wheelDelta / 120;
+                zoom(delta, target);
+            };
+            event.preventDefault() && false;
+        });
+    </script>
+</body>
+
+</html>
