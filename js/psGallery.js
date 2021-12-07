@@ -73,9 +73,11 @@ function chooseImage(e) {
         mainImg.src = e.src;
         var imgDiv = document.getElementById('imgDiv');
         imgDiv.style.transform = null;
+        imageContainer.style.transform = null;
     } else {
         var childEle = e.childNodes[0];
         chooseImage(childEle);
+        imageContainer.style.transform = null;
     }
 }
 // check if this tag is image
@@ -137,4 +139,14 @@ zoom.onwheel = function(e) {
     // pointY = e.clientY - ys * scale;
 
     setTransform();
+}
+
+function rotateLeft() {
+    imageContainer.style.transform = "rotate(90deg)";
+    imageContainer.webkit = "rotate(90deg)";
+}
+
+function rotateRight() {
+    imageContainer.style.transform = "rotate(-90deg)";
+    imageContainer.webkit = "rotate(90deg)";
 }

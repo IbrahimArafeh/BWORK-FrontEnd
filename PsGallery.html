@@ -8,7 +8,10 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/psGallery.css">
     <style>
-
+        .rotate90 {
+            transform: rotate( 90deg);
+            -webkit-transform-origin-y: center;
+        }
     </style>
 </head>
 
@@ -27,8 +30,8 @@
             </figure>
         </div>
         <div>
-            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn">
-            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn">
+            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn" onclick="rotateLeft()">
+            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn" onclick="rotateRight()">
         </div>
         <div id="thumbListView " class="pic-thumb-view ">
             <div id='thumbnailList' class="pic-thumbnail-list ">
