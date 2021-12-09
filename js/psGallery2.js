@@ -107,16 +107,40 @@ function fillMainImage(e) {
     if (checkIMG(e)) {
         var img = document.createElement("img");
         img.setAttribute('id', 'mainImg');
-        img.src = '';
         img.src = e.src;
+
         // load image        
         $(img).on('load', function() {
             image = new fabric.Image(img, {
                 centeredRotation: true,
                 centeredScaling: true,
                 top: 0,
-                left: 0
+                left: 0,
+                // scaleX: 0.29,
+                // scaleY: 0.29
             });
+            // working on canvas width
+            let imgWidth = img.width;
+            let imgHeight = img.height;
+            let canvasWidth = canvas.getWidth();
+            let canvasHeight = canvas.getHeight();
+
+            let imgRatio = imgWidth / imgHeight;
+            let canvasRatio = canvasWidth / canvasHeight;
+            if (imgRatio <= canvasRatio) {
+                if (imgHeight > canvasHeight) {
+                    image.scaleToHeight(canvasHeight, false);
+                    // img.setScaleY = canvasHeight;
+                }
+            } else {
+                if (imgWidth > canvasWidth) {
+                    image.scaleToWidth(canvasWidth);
+                    // img.setScaleX = canvasWidth;
+                }
+            }
+
+            ///
+            canvas.clear();
             canvas.add(image);
         });
     } else {
