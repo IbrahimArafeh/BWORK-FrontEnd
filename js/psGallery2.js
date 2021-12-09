@@ -72,8 +72,6 @@ $(canvas.wrapperEl).on("mousewheel", function(event) {
     event.preventDefault() && false;
 });
 
-
-
 //Add Image List 
 function addThumbImage() {
     var picThumbList = document.getElementById('thumbnailList');
@@ -116,8 +114,6 @@ function fillMainImage(e) {
                 centeredScaling: true,
                 top: 0,
                 left: 0,
-                // scaleX: 0.29,
-                // scaleY: 0.29
             });
             // working on canvas width
             let imgWidth = img.width;
@@ -130,17 +126,16 @@ function fillMainImage(e) {
             if (imgRatio <= canvasRatio) {
                 if (imgHeight > canvasHeight) {
                     image.scaleToHeight(canvasHeight, false);
-                    // img.setScaleY = canvasHeight;
                 }
             } else {
                 if (imgWidth > canvasWidth) {
                     image.scaleToWidth(canvasWidth);
-                    // img.setScaleX = canvasWidth;
                 }
             }
 
             ///
             canvas.clear();
+            canvas.centerObject(image);
             canvas.add(image);
         });
     } else {
@@ -158,66 +153,77 @@ function checkIMG(e) {
     }
 }
 
-// ********  image zoom function start ********////
+function getRotatedImage(image, angle, cb) {
+    const canvas = document.createElement('canvas');
+    const { degree, rad: _rad } = angle;
 
-// var scale = 5,
-//     panning = false,
-//     pointX = 0,
-//     pointY = 0,
-//     start = {
-//         x: 0,
-//         y: 0
-//     },
-//     zoom = document.getElementById("imgDiv");
+    const rad = _rad || degree * Math.PI / 180 || 0;
+    debug('rad', rad);
 
-// function setTransform() {
-//     zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
-// }
+    const { width, height } = calcProjectedRectSizeOfRotatedRect({ width: image.width, height: image.height }, rad);
+    debug('image size', image.width, image.height);
+    debug('projected size', width, height);
 
-// zoom.onmousedown = function(e) {
-//     e.preventDefault();
-//     start = {
-//         x: e.clientX - pointX,
-//         y: e.clientY - pointY
-//     };
-//     panning = true;
-// }
+    canvas.width = Math.ceil(width);
+    canvas.height = Math.ceil(height);
 
-// zoom.onmouseup = function(e) {
-//     panning = false;
-// }
+    const ctx = canvas.getContext('2d');
+    ctx.save();
 
-// zoom.onmousemove = function(e) {
-//     e.preventDefault();
-//     if (!panning) {
-//         return;
-//     }
-//     pointX = (e.clientX - start.x);
-//     pointY = (e.clientY - start.y);
-//     setTransform();
-// }
+    const sin_Height = image.height * Math.abs(Math.sin(rad))
+    const cos_Height = image.height * Math.abs(Math.cos(rad))
+    const cos_Width = image.width * Math.abs(Math.cos(rad))
+    const sin_Width = image.width * Math.abs(Math.sin(rad))
 
-// zoom.onwheel = function(e) {
-//     e.preventDefault();
+    debug('sin_Height, cos_Width', sin_Height, cos_Width);
+    debug('cos_Height, sin_Width', cos_Height, sin_Width);
 
-//     var xs = (e.clientX - pointX) / scale,
-//         ys = (e.clientY - pointY) / scale,
-//         delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-//     (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-//     // pointX = e.clientX - xs * scale;
-//     // pointY = e.clientY - ys * scale;
+    let xOrigin, yOrigin;
 
-//     setTransform();
-// }
+    if (rad < app.boundaryRad) {
+        debug('case1');
+        xOrigin = Math.min(sin_Height, cos_Width);
+        yOrigin = 0;
+    } else if (rad < Math.PI / 2) {
+        debug('case2');
+        xOrigin = Math.max(sin_Height, cos_Width);
+        yOrigin = 0;
+    } else if (rad < Math.PI / 2 + app.boundaryRad) {
+        debug('case3');
+        xOrigin = width;
+        yOrigin = Math.min(cos_Height, sin_Width);
+    } else if (rad < Math.PI) {
+        debug('case4');
+        xOrigin = width;
+        yOrigin = Math.max(cos_Height, sin_Width);
+    } else if (rad < Math.PI + app.boundaryRad) {
+        debug('case5');
+        xOrigin = Math.max(sin_Height, cos_Width);
+        yOrigin = height;
+    } else if (rad < Math.PI / 2 * 3) {
+        debug('case6');
+        xOrigin = Math.min(sin_Height, cos_Width);
+        yOrigin = height;
+    } else if (rad < Math.PI / 2 * 3 + app.boundaryRad) {
+        debug('case7');
+        xOrigin = 0;
+        yOrigin = Math.max(cos_Height, sin_Width);
+    } else if (rad < Math.PI * 2) {
+        debug('case8');
+        xOrigin = 0;
+        yOrigin = Math.min(cos_Height, sin_Width);
+    }
 
-// ********  image zoom function End ********////
+    debug('xOrigin, yOrigin', xOrigin, yOrigin)
 
-// function rotateLeft() {
-//     imageContainer.style.transform = "rotate(90deg)";
-//     imageContainer.webkit = "rotate(90deg)";
-// }
+    ctx.translate(xOrigin, yOrigin)
+    ctx.rotate(rad);
+    ctx.drawImage(image, 0, 0);
+    if (DEBUG) drawMarker(ctx, 'red');
 
-// function rotateRight() {
-//     imageContainer.style.transform = "rotate(-90deg)";
-//     imageContainer.webkit = "rotate(90deg)";
-// }
+    ctx.restore();
+
+    const dataURL = canvas.toDataURL('image/jpg');
+
+    cb(dataURL);
+}

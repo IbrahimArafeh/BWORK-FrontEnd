@@ -67,18 +67,6 @@ body {
     max-width: 100%;
 }
 
-.figureImg {
-    display: block;
-    max-width: 100%;
-    max-height: 90%;
-    /* min-width: 100%; */
-    /* height: 450px; */
-    height: 345px;
-    width: 600px;
-    object-fit: scale-down;
-    animation: ImageViewer-animation 2s;
-}
-
 .figureImg:hover {
     cursor: move;
 }
@@ -168,6 +156,12 @@ li:hover {
     box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.38);
 }
 
+canvas {
+    /* or some other selector */
+    width: 640px;
+    height: 400px;
+}
+
 
 /* scrol bar */
 
@@ -234,15 +228,6 @@ li:hover {
 /* small size */
 
 @media (max-width: 800px) {
-    .figureImg {
-        display: block;
-        max-width: 100%;
-        max-height: 90%;
-        height: 450px;
-        width: 478px;
-        object-fit: scale-down;
-        animation: ImageViewer-animation 2s;
-    }
     .pic-thumb-view {
         overflow: hidden;
         max-height: 350px;
@@ -282,16 +267,6 @@ li:hover {
 }
 
 @media (max-width: 600px) {
-    .figureImg {
-        display: block;
-        max-width: 100%;
-        max-height: 90%;
-        /* min-width: 100%; */
-        height: 350px;
-        width: 580px;
-        object-fit: scale-down;
-        animation: ImageViewer-animation 2s;
-    }
     .pic-thumb-view {
         overflow: hidden;
         max-height: 350px;
@@ -344,30 +319,9 @@ li:hover {
     }
 }
 
-@media (max-width: 1300px) {
-    .figureImg {
-        display: block;
-        max-width: 100%;
-        max-height: 90%;
-        /* min-width: 100%; */
-        height: 350px;
-        width: 580px;
-        object-fit: scale-down;
-        animation: ImageViewer-animation 2s;
-    }
-}
+@media (max-width: 1300px) {}
 
 @media (min-width: 1400px) {
-    .figureImg {
-        display: block;
-        max-width: 100%;
-        max-height: 90%;
-        /* min-width: 100%; */
-        height: 500px;
-        width: 820px;
-        object-fit: scale-down;
-        animation: ImageViewer-animation 2s;
-    }
     .pic-thumb-view {
         overflow: hidden;
         max-height: 350px;
