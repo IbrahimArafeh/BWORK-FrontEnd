@@ -156,12 +156,6 @@ li:hover {
     box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.38);
 }
 
-canvas {
-    /* or some other selector */
-    width: 640px;
-    height: 400px;
-}
-
 
 /* scrol bar */
 

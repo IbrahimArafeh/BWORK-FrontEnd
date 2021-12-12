@@ -227,3 +227,15 @@ function getRotatedImage(image, angle, cb) {
 
     cb(dataURL);
 }
+
+$("#rotate").click(function() {
+    var curAngle = canvas.item(0).angle;
+    canvas.item(0).angle = (curAngle + 90);
+    canvas.renderAll();
+});
+
+function rotateImageCanvas(angle) {
+    var curAngle = canvas.item(0).angle;
+    canvas.item(0).angle = (curAngle + angle);
+    canvas.renderAll();
+}
