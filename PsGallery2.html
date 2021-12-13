@@ -18,17 +18,14 @@
             <figure style="display: flex; justify-content: center; overflow: hidden;">
                 <div id="ImageViewer-Prev-btn" class="ImageViewer-Prev"> &#60; </div>
                 <div style="overflow: hidden; overflow: hidden;">
-                    <!--  div id=imgDiv class=imgDiv 
-                         img id=mainImg alt='imgDiv' class=figureImg-->
-
                     <canvas id="imageCanvas" width='640' height='400'>Your browser does not support HTML5 Canvas</canvas>
                 </div>
                 <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
             </figure>
         </div>
         <div>
-            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn" onclick="rotateImageCanvas(90)">
-            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn" onclick="rotateRight()">
+            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn" onclick="rotateImageCanvas(-90)">
+            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn" onclick="rotateImageCanvas(90)">
         </div>
         <div id="thumbListView " class="pic-thumb-view ">
             <div id='thumbnailList' class="pic-thumbnail-list ">
