@@ -115,7 +115,9 @@ function fillMainImage(e) {
                 top: 0,
                 left: 0,
             });
-            console.log(image);
+
+            // add canvas dimension
+            canvasDimensions(600, 330);
             // working on canvas width
             let imgWidth = img.width;
             let imgHeight = img.height;
@@ -159,4 +161,9 @@ function rotateImageCanvas(angle) {
     canvas.item(0).angle = (curAngle + angle);
     canvas.renderAll();
     canvas.centerObject(image);
+}
+
+function canvasDimensions(width, height) {
+    canvas.setWidth(width);
+    canvas.setHeight(height);
 }
