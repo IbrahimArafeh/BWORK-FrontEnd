@@ -156,6 +156,11 @@ li:hover {
     box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.38);
 }
 
+.canvas-container {
+    width: 477px;
+    height: 322px;
+}
+
 
 /* scrol bar */
 
@@ -337,4 +342,8 @@ li:hover {
 .rot-left-btn:hover {
     background-color: #263d75;
     transform: scale(1.09);
+}
+
+.canvas-container {
+    margin: 0 auto;
 }

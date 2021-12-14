@@ -6,7 +6,6 @@ const imageContainer = document.getElementById("mainImg"); // assigning variable
 const thumbNailList = document.getElementById("thumbnailList");
 var canvas = window._canvas = new fabric.Canvas("imageCanvas");
 var myimage = "9.png"; // Assigning initial value for the varibale to show on page loading
-var img;
 
 // Previous Image button
 prevBtn.addEventListener("click", function() {
@@ -104,7 +103,7 @@ function addThumbImage() {
 // fill Display image
 function fillMainImage(e) {
     if (checkIMG(e)) {
-        img = document.createElement("img");
+        var img = document.createElement("img");
         img.setAttribute('id', 'mainImg');
         img.src = e.src;
 
