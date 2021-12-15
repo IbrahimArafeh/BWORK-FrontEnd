@@ -167,3 +167,14 @@ function canvasDimensions(width, height) {
     canvas.setWidth(width);
     canvas.setHeight(height);
 }
+
+window.addEventListener('resize', function(event) {
+    var ww = document.body.clientWidth;
+    if (ww <= 600) {
+        canvasDimensions(490, 330);
+        canvas.centerObject(image);
+    } else if (ww <= 800) {
+        canvasDimensions(458, 330);
+        canvas.centerObject(image);
+    }
+}, true);
