@@ -98,7 +98,6 @@ function addThumbImage() {
             fillMainImage(TagaItem);
         }
     }
-
 }
 // fill Display image
 function fillMainImage(e) {
@@ -115,9 +114,8 @@ function fillMainImage(e) {
                 top: 0,
                 left: 0,
             });
-
             // add canvas dimension
-            canvasDimensions(600, 330);
+            resizeCanvas();
             // working on canvas width
             let imgWidth = img.width;
             let imgHeight = img.height;
@@ -140,6 +138,7 @@ function fillMainImage(e) {
             canvas.clear();
             canvas.centerObject(image);
             canvas.add(image);
+
         });
     } else {
         var childEle = e.childNodes[0];
@@ -164,17 +163,45 @@ function rotateImageCanvas(angle) {
 }
 
 function canvasDimensions(width, height) {
-    canvas.setWidth(width);
-    canvas.setHeight(height);
+    if (width == null) {
+        canvas.setHeight(height);
+    } else if (height == null) {
+        canvas.setWidth(width);
+    } else {
+        canvas.setHeight(height);
+        canvas.setWidth(width);
+    }
+
+
 }
 
 window.addEventListener('resize', function(event) {
-    var ww = document.body.clientWidth;
-    if (ww <= 600) {
+    resizeCanvas();
+}, true);
+
+// Resize Canvas which contains image
+function resizeCanvas() {
+    var scrWidth = document.body.clientWidth;
+    var scrHeight = document.body.clientHeight;
+    // 600,800,1000,1200 related with @mediain css file
+    if (scrWidth < 600) {
+        canvasDimensions(330, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 600) {
         canvasDimensions(490, 330);
         canvas.centerObject(image);
-    } else if (ww <= 800) {
+    }
+    if (scrWidth >= 800) {
         canvasDimensions(458, 330);
         canvas.centerObject(image);
     }
-}, true);
+    if (scrWidth >= 1000) {
+        canvasDimensions(700, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 1400) {
+        canvasDimensions(800, 330);
+        canvas.centerObject(image);
+    }
+}
