@@ -9,25 +9,33 @@ var myimage = "9.png"; // Assigning initial value for the varibale to show on pa
 
 // Previous Image button
 prevBtn.addEventListener("click", function() {
-    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
     var arrayIndex = searchStringInArray(streetaddress, myimages);
     if (arrayIndex > 0) {
         arrayIndex--;
-        imageContainer.src = "Content/" + myimages[arrayIndex]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     } else if (arrayIndex == 0) {
-        imageContainer.src = "Content/" + myimages[myimages.length - 1]
+        var newImageSrc = "Content/" + myimages[myimages.length - 1];
+        replaceImage(newImageSrc);
     }
 
 });
 // Next Image button
 nextBtn.addEventListener("click", function() {
-    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
     var arrayIndex = searchStringInArray(streetaddress, myimages);
     if (arrayIndex < myimages.length - 1) {
         arrayIndex++;
-        imageContainer.src = "Content/" + myimages[arrayIndex]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     } else if (arrayIndex = myimages.length - 1) {
-        imageContainer.src = "Content/" + myimages[0]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     }
 
 });
@@ -144,6 +152,13 @@ function fillMainImage(e) {
         var childEle = e.childNodes[0];
         fillMainImage(childEle);
     }
+}
+
+// fill image by image path
+function replaceImage(imgUrl) {
+    var imgElem = image._element; //reference to actual image element
+    imgElem.src = imgUrl; //set image source
+    imgElem.onload = () => canvas.renderAll(); //render on image load
 }
 
 // check if this tag is image
