@@ -263,18 +263,18 @@ li:hover {
     }
     .pagi-container {
         padding: 0px;
-        margin: -79px;
+        margin: 0px;
         max-width: 100%;
     }
-    /* change this to class */
-    figure {
+    .ImageViewer-Figure {
         display: flex;
         justify-content: center;
-        margin-block-start: 90px;
-        /* margin-inline-start: -39px; */
-        margin-inline-start: 119px;
-        margin-inline-end: -39px;
-        margin-block-end: 90px;
+        overflow: hidden;
+        justify-content: center;
+        margin-block-start: 20px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin-block-end: 20px;
     }
     .gallery-container {
         width: 498px;
@@ -316,18 +316,18 @@ li:hover {
     }
     .pagi-container {
         padding: 0px;
-        margin: -79px;
+        margin: 0px;
         max-width: 100%;
     }
-    /* change this to class */
-    figure {
+    .ImageViewer-Figure {
         display: flex;
         justify-content: center;
-        margin-block-start: 90px;
-        /* margin-inline-start: -39px; */
-        margin-inline-start: 119px;
-        margin-inline-end: -39px;
-        margin-block-end: 90px;
+        overflow: hidden;
+        justify-content: center;
+        margin-block-start: 20px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin-block-end: 20px;
     }
     .gallery-container {
         width: 498px;
@@ -369,18 +369,18 @@ li:hover {
     }
     .pagi-container {
         padding: 0px;
-        margin: -50px;
+        margin: 0px;
         max-width: 100%;
     }
-    /* change this to class */
-    figure {
+    .ImageViewer-Figure {
         display: flex;
         justify-content: center;
-        margin-block-start: 50px;
-        /* margin-inline-start: -39px; */
-        margin-inline-start: 65px;
-        margin-inline-end: -30px;
-        margin-block-end: 54px;
+        overflow: hidden;
+        justify-content: center;
+        margin-block-start: 20px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin-block-end: 20px;
     }
     .gallery-container {
         width: 498px;
@@ -426,15 +426,15 @@ li:hover {
         margin: 2px;
         max-width: 100%;
     }
-    /* change this to class */
-    figure {
+    .ImageViewer-Figure {
         display: flex;
         justify-content: center;
-        margin-block-start: 50px;
-        /* margin-inline-start: -39px; */
+        overflow: hidden;
+        justify-content: center;
+        margin-block-start: 20px;
         margin-inline-start: 0px;
-        margin-inline-end: -30px;
-        margin-block-end: 35px;
+        margin-inline-end: 0px;
+        margin-block-end: 20px;
     }
     .gallery-container {
         width: 498px;
@@ -474,5 +474,15 @@ li:hover {
         cursor: pointer;
         color: white;
         margin: 20px;
+    }
+    .ImageViewer-Figure {
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        justify-content: center;
+        margin-block-start: 20px;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        margin-block-end: 20px;
     }
 }

@@ -156,14 +156,14 @@ function fillMainImage(e) {
     }
 }
 
-// fill image by image path
+// replace image src into canvas tag by pass img src
 function replaceImage(imgUrl) {
     var imgElem = image._element; //reference to actual image element
     imgElem.src = imgUrl; //set image source
     imgElem.onload = () => canvas.renderAll(); //render on image load
 }
 
-// check if this tag is image
+// check img tag
 function checkIMG(e) {
     if (e.nodeName == 'IMG') {
         return true;
@@ -172,13 +172,14 @@ function checkIMG(e) {
     }
 }
 
+// rotate image by pass angle
 function rotateImageCanvas(angle) {
     var curAngle = canvas.item(0).angle;
     canvas.item(0).angle = (curAngle + angle);
     canvas.renderAll();
     canvas.centerObject(image);
 }
-
+// change canvas dimensions pass new width and height
 function canvasDimensions(width, height) {
     if (width == null) {
         canvas.setHeight(height);
@@ -191,7 +192,7 @@ function canvasDimensions(width, height) {
 
 
 }
-
+// event change screen width
 window.addEventListener('resize', function(event) {
     resizeCanvas();
 }, true);
@@ -201,24 +202,24 @@ function resizeCanvas() {
     var scrWidth = document.body.clientWidth;
     var scrHeight = document.body.clientHeight;
     // 600,800,1000,1200 related with @mediain css file
-    if (scrWidth < 600) {
-        canvasDimensions(330, 330);
+    if (scrWidth < 600 && scrWidth > 0) {
+        canvasDimensions(400, 330);
         canvas.centerObject(image);
     }
-    if (scrWidth >= 600) {
+    if (scrWidth >= 600 && scrWidth < 800) {
         canvasDimensions(490, 330);
         canvas.centerObject(image);
     }
-    if (scrWidth >= 800) {
-        canvasDimensions(458, 330);
+    if (scrWidth >= 800 && scrWidth < 1000) {
+        canvasDimensions(695, 330);
         canvas.centerObject(image);
     }
-    if (scrWidth >= 1000) {
+    if (scrWidth >= 1000 && scrWidth < 1400) {
         canvasDimensions(700, 330);
         canvas.centerObject(image);
     }
     if (scrWidth >= 1400) {
-        canvasDimensions(800, 330);
+        canvasDimensions(950, 400);
         canvas.centerObject(image);
     }
 }
