@@ -9,6 +9,20 @@ var myimage = "9.png"; // Assigning initial value for the varibale to show on pa
 
 // Previous Image button
 // get src from canvas and replace it with previous item into myimages array
+function previousImage() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex > 0) {
+        arrayIndex--;
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    } else if (arrayIndex == 0) {
+        var newImageSrc = "Content/" + myimages[myimages.length - 1];
+        replaceImage(newImageSrc);
+    }
+}
 prevBtn.addEventListener("click", function() {
     var imgElem = image._element; //reference to actual image element
     var currentImageSrc = imgElem.src //set image source
@@ -26,6 +40,20 @@ prevBtn.addEventListener("click", function() {
 });
 // Next Image button
 // get src from canvas and replace it with next item into myimages array
+function nextImage() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex < myimages.length - 1) {
+        arrayIndex++;
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    } else if (arrayIndex = myimages.length - 1) {
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    }
+}
 nextBtn.addEventListener("click", function() {
     var imgElem = image._element; //reference to actual image element
     var currentImageSrc = imgElem.src //set image source
