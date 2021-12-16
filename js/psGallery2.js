@@ -8,6 +8,7 @@ var canvas = window._canvas = new fabric.Canvas("imageCanvas");
 var myimage = "9.png"; // Assigning initial value for the varibale to show on page loading
 
 // Previous Image button
+// get src from canvas and replace it with previous item into myimages array
 prevBtn.addEventListener("click", function() {
     var imgElem = image._element; //reference to actual image element
     var currentImageSrc = imgElem.src //set image source
@@ -24,6 +25,7 @@ prevBtn.addEventListener("click", function() {
 
 });
 // Next Image button
+// get src from canvas and replace it with next item into myimages array
 nextBtn.addEventListener("click", function() {
     var imgElem = image._element; //reference to actual image element
     var currentImageSrc = imgElem.src //set image source
