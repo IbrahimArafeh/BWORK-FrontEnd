@@ -10038,8 +10038,8 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
         }
 
         var data = (fabric.StaticCanvas.supports('toDataURLWithQuality')) ?
-            (croppedCanvasEl || canvasEl).toDataURL('image/' + format, quality) :
-            (croppedCanvasEl || canvasEl).toDataURL('image/' + format);
+        (croppedCanvasEl || canvasEl).toDataURL('image/' + format):
+            (croppedCanvasEl || canvasEl).toDataURL('image/' + format, quality);
 
         this.contextTop && this.clearContext(this.contextTop);
         this.renderAll();
