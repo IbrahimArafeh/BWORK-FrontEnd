@@ -69,6 +69,16 @@ nextBtn.addEventListener("click", function() {
     }
 
 });
+// get last image from myimage array
+function lastImage() {
+    var newImageSrc = "Content/" + myimages[myimage.length];
+    replaceImage(newImageSrc);
+}
+// get first image from myimage array
+function firstImage() {
+    var newImageSrc = "Content/" + myimages[0];
+    replaceImage(newImageSrc);
+}
 // search about string into array
 function searchStringInArray(str, strArray) {
     for (var j = 0; j < strArray.length; j++) {
