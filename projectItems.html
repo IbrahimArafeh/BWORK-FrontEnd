@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/dataTable.css" rel="stylesheet" type="text/css" />
+    <link href="css/tabpages.css" rel="stylesheet" type="text/css" />
+    <!-- <script type = "text/javascript" charset = "utf-8" src = "Scripts/Jquery/jquery.min.js" ></script> -->
+    <title>Project Items</title>
+</head>
+
+<body>
+    <div class="tab">
+        <button class="tablinks" id="tabpages" onclick="displayTable(event, 'TABPAGES')">Tab pages</button>
+        <button class="tablinks" id="containers" onclick="displayTable(event, 'CONTAINER')">Container</button>
+        <button class="tablinks" id="items" onclick="displayTable(event, 'ITEMS')">Items</button>
+    </div>
+
+    <hr>
+    <br>
+
+    <div id="TABPAGES" class="tabcontent">
+        <button id="modalBtn" class="button">Add New tab page</button>
+        <hr>
+        <br>
+
+        <div id="simpleModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closeBtn">&times;</span>
+                    <h2>Add new tab page</h2>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="event.preventDefault();onformSubmit();" autocomplete="off">
+                        <div>
+                            <label>Name</label>
+                            <input id="tabpagename" type="text" name="tabpagename">
+                            <small class="validation-error hide" id="tabpagenameValidationError">This field is
+                                    required.</small>
+                        </div>
+                        <div class="form-action-buttons">
+                            <input id="btn_submit" type="submit" value="sumbit">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tblContainer">
+            <table id="tabpagestable" class="list">
+                <thead class="tblHeader">
+                    <tr>
+                        <th>name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="CONTAINER" class="tabcontent">
+        <button id="modalBtnCon" class="button">Add New Container</button>
+        <hr>
+        <br>
+        <div id="simpleModalCon" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closeBtnCon">&times;</span>
+                    <h2>Add new Container</h2>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="event.preventDefault();onformSubmitCon();" autocomplete="off">
+                        <div>
+                            <label>Name</label>
+                            <input id="containername" type="text" name="containername">
+                            <small class="validation-error hide" id="containernameValidationError">This field is
+                                    required.</small>
+                        </div>
+                        <div>
+                            <label>in tab page</label>
+                            <input id="containertab" type="text" name="containertab">
+                            <small class="validation-error hide" id="containertabValidationError">This field is
+                                    required.</small>
+                        </div>
+                        <div>
+                            <label>foreground color</label>
+                            <input id="containerforeground" type="color" name="containerforeground">
+                        </div>
+                        <br>
+                        <div>
+                            <label>background color</label>
+                            <input id="containerbackground" type="color" name="containerbackground">
+                        </div>
+                        <div>
+                            <label>font</label>
+                            <input id="containerfont" type="text" name="containerfont">
+                        </div>
+                        <div>
+                            <label>font family</label>
+                            <input id="containerfontfamily" type="text" name="containerfontfamily">
+                        </div>
+                        <div>
+                            <label>font size</label>
+                            <input id="containerfontsize" type="text" name="containerfontsize">
+                        </div>
+                        <div>
+                            <label>font style</label>
+                            <input id="containerfontstyle" type="text" name="containerfontstyle">
+                        </div>
+                        <div>
+                            <label>hidden</label>
+                            <input id="containerhidden" type="checkbox" name="containerhidden">
+                        </div>
+                        <br>
+                        <div>
+                            <label>width</label>
+                            <input id="containerwidth" type="number" name="containerwidth">
+                        </div>
+                        <div class="form-action-buttons">
+                            <input id="btn_submit_con" type="submit" value="sumbit">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+        <div class="tblContainer">
+            <table id="containerstable" class="list">
+                <thead class="tblHeader">
+                    <tr>
+                        <th>Name</th>
+                        <th>in tab page</th>
+                        <th style="display:none;">foreground color</th>
+                        <th style="display:none;">background color</th>
+                        <th style="display:none;">font</th>
+                        <th style="display:none;">font family</th>
+                        <th style="display:none;">font Size</th>
+                        <th style="display:none;">font Style</th>
+                        <th>hidden</th>
+                        <th>width</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="ITEMS" class="tabcontent">
+        <button id="modalBtnIt" class="button">Add New Item</button>
+        <hr>
+        <br>
+        <div id="simpleModalIt" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closeBtnIt">&times;</span>
+                    <h2>Add new Item</h2>
+                </div>
+                <div class="modal-body">
+                    <form onsubmit="event.preventDefault();onformSubmitIt();" autocomplete="off">
+                        <div>
+                            <label>id</label>
+                            <input id="itemid" type="text" name="itemid">
+                            <small class="validation-error hide" id="itemidValidationError">This field is
+                                    required.</small>
+                        </div>
+                        <div>
+                            <label>Class</label>
+                            <select id="itemclass" name="itemclass">
+                                    <option value="0">-</option>
+                                    <option value="1">String</option>
+                                    <option value="2">Integer</option>
+                                    <option value="3">Float</option>
+                                    <option value="4">Date</option>
+                                    <option value="5">Time</option>
+                                    <option value="6" >Combobox</option>
+                                    <option value="7" >Checkbox</option>
+                                    <option value="8" >Button</option>
+                                    <option value="9" >Spreadsheet</option>
+                                </select>
+                            <small class="validation-error hide" id="itemclassValidationError">This field is required.</small>
+                        </div>
+                        <br>
+                        <div>
+                            <label>database field</label>
+                            <input id="itemdatabasefield" type="text" name="itemdatabasefield">
+                            <small class="validation-error hide" id="itemdatabasefieldValidationError">This field is
+                                    required.</small>
+                        </div>
+                        <div>
+                            <label>Mandatory</label>
+                            <input id="itemmandatory" type="checkbox" name="itemmandatory">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Default Value</label>
+                            <input id="itemdefaultvalue" type="text" name="itemdefaultvalue">
+                        </div>
+                        <div>
+                            <label>Label</label>
+                            <input id="itemlabel" type="text" name="itemlabel">
+                        </div>
+                        <div>
+                            <label>Searchable</label>
+                            <input id="itemsearchable" type="checkbox" name="itemsearchable">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Printable</label>
+                            <input id="itemprintable" type="checkbox" name="itemprintable">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Tab page</label>
+                            <input id="itemtabpage" type="text" name="itemtabpage">
+                        </div>
+                        <div>
+                            <label>Container</label>
+                            <input id="itemcontainer" type="text" name="itemcontainer">
+                        </div>
+                        <div>
+                            <label>font</label>
+                            <input id="itemfont" type="text" name="itemfont">
+                        </div>
+                        <div>
+                            <label>font family</label>
+                            <input id="itemfontfamily" type="text" name="itemfontfamily">
+                        </div>
+                        <div>
+                            <label>font size</label>
+                            <input id="itemfontsize" type="text" name="itemfontsize">
+                        </div>
+                        <div>
+                            <label>font style</label>
+                            <input id="itemfontstyle" type="text" name="itemfontstyle">
+                        </div>
+                        <div>
+                            <label>foreground color</label>
+                            <input id="itemforeground" type="color" name="itemforeground">
+                        </div>
+                        <br>
+                        <div>
+                            <label>background color</label>
+                            <input id="itembackground" type="color" name="itembackground">
+                        </div>
+                        <div>
+                            <label>Hidden</label>
+                            <input id="itemhidden" type="checkbox" name="itemhidden">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Width</label>
+                            <input id="itemwidth" type="number" name="itemwidth">
+                        </div>
+                        <div>
+                            <label>change event</label>
+                            <input id="itemchangeevent" type="text" name="itemchangeevent">
+                        </div>
+                        <div class="form-action-buttons">
+                            <input id="btn_submit_it" type="submit" value="sumbit">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+        <div class="tblContainer">
+            <table id="itemstable" class="list">
+                <thead class="tblHeader">
+                    <tr>
+                        <th>id</th>
+                        <th>class</th>
+                        <th>database</th>
+                        <th>mandatory</th>
+                        <th style="display:none;">default value</th>
+                        <th>label</th>
+                        <th style="display:none;">searchable</th>
+                        <th style="display:none;">printable</th>
+                        <th style="display:none;">tab page</th>
+                        <th style="display:none;">container</th>
+                        <th style="display:none;">font</th>
+                        <th style="display:none;">font family</th>
+                        <th style="display:none;">font Size</th>
+                        <th style="display:none;">font Style</th>
+                        <th style="display:none;">foreground color</th>
+                        <th style="display:none;">background color</th>
+                        <th style="display:none;">hidden</th>
+                        <th style="display:none;">width</th>
+                        <th style="display:none;">change event</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="js/dataTable.js" type="text/javascript"></script>
+    <script src="js/tabPages.js" type="text/javascript"></script>
+</body>
+
+</html>

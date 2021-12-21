@@ -1,35 +1,83 @@
 // Declaring variable array of images. You can put as many as you want.
-const myimages = ['t1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg', 't1.jpg', '08.jpg', '02.jpg', '09.png', '07.jpg', '04.jpg'];
+const myimages = ['t1.jpg', '08.jpg', '02.jpg', '07.jpg', '04.jpg', '08.jpg', '02.jpg', '07.jpg', '04.jpg'];
 const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
 const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
 const imageContainer = document.getElementById("mainImg"); // assigning variable for image container div
 const thumbNailList = document.getElementById("thumbnailList");
-var myimage = "9.png"; // Assigning initial value for the varibale to show on page loading
+var canvas = window._canvas = new fabric.Canvas("imageCanvas");
+const dataImagesArray = [];
 
 // Previous Image button
-prevBtn.addEventListener("click", function() {
-    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+// get src from canvas and replace it with previous item into myimages array
+function previousImage() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
     var arrayIndex = searchStringInArray(streetaddress, myimages);
     if (arrayIndex > 0) {
         arrayIndex--;
-        imageContainer.src = "Content/" + myimages[arrayIndex]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     } else if (arrayIndex == 0) {
-        imageContainer.src = "Content/" + myimages[myimages.length - 1]
+        var newImageSrc = "Content/" + myimages[myimages.length - 1];
+        replaceImage(newImageSrc);
     }
-
+}
+prevBtn.addEventListener("click", function() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex > 0) {
+        arrayIndex--;
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    } else if (arrayIndex == 0) {
+        var newImageSrc = "Content/" + myimages[myimages.length - 1];
+        replaceImage(newImageSrc);
+    }
 });
 // Next Image button
-nextBtn.addEventListener("click", function() {
-    var streetaddress = imageContainer.src.substr(imageContainer.src.length - 6);
+// get src from canvas and replace it with next item into myimages array
+function nextImage() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
     var arrayIndex = searchStringInArray(streetaddress, myimages);
     if (arrayIndex < myimages.length - 1) {
         arrayIndex++;
-        imageContainer.src = "Content/" + myimages[arrayIndex]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     } else if (arrayIndex = myimages.length - 1) {
-        imageContainer.src = "Content/" + myimages[0]
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    }
+}
+nextBtn.addEventListener("click", function() {
+    var imgElem = image._element; //reference to actual image element
+    var currentImageSrc = imgElem.src //set image source
+    var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
+    var arrayIndex = searchStringInArray(streetaddress, myimages);
+    if (arrayIndex < myimages.length - 1) {
+        arrayIndex++;
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
+    } else if (arrayIndex = myimages.length - 1) {
+        var newImageSrc = "Content/" + myimages[arrayIndex];
+        replaceImage(newImageSrc);
     }
 
 });
+// get last image from myimage array
+function lastImage() {
+    var newImageSrc = "Content/" + myimages[myimages.length - 1];
+    replaceImage(newImageSrc);
+}
+// get first image from myimage array
+function firstImage() {
+    var newImageSrc = "Content/" + myimages[0];
+    replaceImage(newImageSrc);
+}
 // search about string into array
 function searchStringInArray(str, strArray) {
     for (var j = 0; j < strArray.length; j++) {
@@ -37,6 +85,39 @@ function searchStringInArray(str, strArray) {
     }
     return -1;
 }
+
+// mouse move
+canvas.on("mouse:move", function(event) {
+    currentMouseY = Math.round(event.e.y - canvas._offset.top);
+    currentMouseX = Math.round(event.e.x - canvas._offset.left);
+});
+
+// zoom function
+function zoom(delta, target) {
+    var factor = 0.8;
+    if (delta < 0) {
+        factor = 1 / factor;
+    }
+    // Zoom into the image.
+    image.setScaleX(image.getScaleX() * factor);
+    image.setScaleY(image.getScaleY() * factor);
+    // Calculate displacement of zooming position.
+    var dx = (currentMouseX - image.getLeft()) * (factor - 1),
+        dy = (currentMouseY - image.getTop()) * (factor - 1);
+    // Compensate for displacement.
+    image.setLeft(image.getLeft() - dx);
+    image.setTop(image.getTop() - dy);
+    canvas.renderAll();
+}
+
+$(canvas.wrapperEl).on("mousewheel", function(event) {
+    var target = canvas.findTarget(event);
+    if (target) {
+        var delta = event.originalEvent.wheelDelta / 120;
+        zoom(delta, target);
+    };
+    event.preventDefault() && false;
+});
 
 //Add Image List 
 function addThumbImage() {
@@ -48,39 +129,102 @@ function addThumbImage() {
         picThumbList.appendChild(ThumbnailDiv);
         var TagaItem = document.createElement('a');
         TagaItem.setAttribute('href', '#');
-        TagaItem.setAttribute('onclick', 'chooseImage(this)');
+        TagaItem.setAttribute('onclick', 'fillMainImage(this)');
         ThumbnailDiv.appendChild(TagaItem);
+
         var imgDiv = document.createElement('div');
         imgDiv.setAttribute('id', 'imgDiv');
         imgDiv.setAttribute('class', 'info-container');
         TagaItem.appendChild(imgDiv);
         var imgTag = document.createElement('img');
-        imgTag.setAttribute('alt', 'picture');
+
         imgTag.setAttribute('class', 'info-thumb-pic');
         imgTag.setAttribute('id', 'Imagethumb' + i);
-        imgTag.src = 'Content/' + myimages[i];
-        imgDiv.appendChild(imgTag);
+        if (i != 0) {
+            imgTag.setAttribute('alt', 'picture');
+            imgTag.src = 'Content/' + myimages[i];
+            imgTag.setAttribute('id', 'imageid');
+        }
         if (i == 0) {
-            chooseImage(TagaItem);
+            imgTag.setAttribute('alt', 'nonPicture');
+            imgTag.src = 'Content/icon/addIcon.png';
+            imgTag.setAttribute('onclick', '');
+        }
+        imgDiv.appendChild(imgTag);
+        if (i == 1) {
+            fillMainImage(TagaItem);
         }
     }
-
 }
-// check IMG tag info node and child node
-function chooseImage(e) {
+// fill Display image
+function fillMainImage(e) {
     if (checkIMG(e)) {
-        var mainImg = document.getElementById('mainImg');
-        mainImg.src = e.src;
-        var imgDiv = document.getElementById('imgDiv');
-        imgDiv.style.transform = null;
-        imageContainer.style.transform = null;
+        canvas.clear();
+        var img = document.createElement("img");
+        img.setAttribute('id', 'mainImg');
+        img.src = e.src;
+
+        // load image        
+        $(img).on('load', function() {
+            image = new fabric.Image(img, {
+                centeredRotation: true,
+                centeredScaling: true,
+                top: 0,
+                left: 0,
+            });
+            // add canvas dimension
+            resizeCanvas();
+            // working on canvas width
+            // scale image depends on canvas dimension
+            let imgWidth = img.width;
+            let imgHeight = img.height;
+            let canvasWidth = canvas.getWidth();
+            let canvasHeight = canvas.getHeight();
+
+            let imgRatio = imgWidth / imgHeight;
+            let canvasRatio = canvasWidth / canvasHeight;
+            if (imgRatio <= canvasRatio) {
+                if (imgHeight > canvasHeight) {
+                    image.scaleToHeight(canvasHeight);
+                }
+            } else {
+                if (imgWidth > canvasWidth) {
+                    image.scaleToWidth(canvasWidth);
+                }
+            }
+            ///
+            // var ImageData = canvas.toDataURL();
+            // ImageData.replace(/^data:image\/(png|jpg);base64,/, "");
+            // console.log(ImageData);
+            gettoBase64Bit(canvas.toDataURL());
+            canvas.clear();
+            if (e.alt == 'nonPicture') {
+                var ctx = canvas.getContext("2d");
+                ctx.font = "30px Comic Sans MS";
+                ctx.fillStyle = "white";
+                ctx.textAlign = "center";
+                ctx.fillText("upload new image", canvas.width / 2, canvas.height / 2);
+            } else {
+                canvas.centerObject(image);
+                canvas.add(image);
+            }
+
+        });
     } else {
         var childEle = e.childNodes[0];
-        chooseImage(childEle);
-        imageContainer.style.transform = null;
+        fillMainImage(childEle);
     }
 }
-// check if this tag is image
+
+// replace image src into canvas tag by pass img src
+function replaceImage(imgUrl) {
+    canvas.clear();
+    var imgElem = image._element; //reference to actual image element
+    imgElem.src = imgUrl; //set image source
+    imgElem.onload = () => canvas.renderAll(); //render on image load
+}
+
+// check img tag
 function checkIMG(e) {
     if (e.nodeName == 'IMG') {
         return true;
@@ -89,66 +233,115 @@ function checkIMG(e) {
     }
 }
 
-// ********  image zoom function start ********////
-
-var scale = 5,
-    panning = false,
-    pointX = 0,
-    pointY = 0,
-    start = {
-        x: 0,
-        y: 0
-    },
-    zoom = document.getElementById("imgDiv");
-
-function setTransform() {
-    zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
+// rotate image by pass angle
+function rotateImageCanvas(angle) {
+    var curAngle = canvas.item(0).angle;
+    canvas.item(0).angle = (curAngle + angle);
+    canvas.renderAll();
+    canvas.centerObject(image);
 }
-
-zoom.onmousedown = function(e) {
-    e.preventDefault();
-    start = {
-        x: e.clientX - pointX,
-        y: e.clientY - pointY
-    };
-    panning = true;
-}
-
-zoom.onmouseup = function(e) {
-    panning = false;
-}
-
-zoom.onmousemove = function(e) {
-    e.preventDefault();
-    if (!panning) {
-        return;
+// change canvas dimensions pass new width and height
+function canvasDimensions(width, height) {
+    if (width == null) {
+        canvas.setHeight(height);
+    } else if (height == null) {
+        canvas.setWidth(width);
+    } else {
+        canvas.setHeight(height);
+        canvas.setWidth(width);
     }
-    pointX = (e.clientX - start.x);
-    pointY = (e.clientY - start.y);
-    setTransform();
+}
+// event change screen width
+window.addEventListener('resize', function(event) {
+    resizeCanvas();
+}, true);
+
+// Resize Canvas which contains image
+function resizeCanvas() {
+    var scrWidth = document.body.clientWidth;
+    var scrHeight = document.body.clientHeight;
+    // 600,800,1000,1200 related with @mediain css file
+    if (scrWidth < 600 && scrWidth > 0) {
+        canvasDimensions(400, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 600 && scrWidth < 800) {
+        canvasDimensions(490, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 800 && scrWidth < 1000) {
+        canvasDimensions(695, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 1000 && scrWidth < 1400) {
+        canvasDimensions(700, 330);
+        canvas.centerObject(image);
+    }
+    if (scrWidth >= 1400) {
+        canvasDimensions(950, 400);
+        canvas.centerObject(image);
+    }
 }
 
-zoom.onwheel = function(e) {
-    e.preventDefault();
+// Convert a base64 string into a binary Uint8 Array 
+// https://gist.github.com/borismus/1032746
+var blobURL;
+var fileName;
 
-    var xs = (e.clientX - pointX) / scale,
-        ys = (e.clientY - pointY) / scale,
-        delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-    (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-    // pointX = e.clientX - xs * scale;
-    // pointY = e.clientY - ys * scale;
+function convertDataURIToBinary(dataURI) {
+    var BASE64_MARKER = ';base64,';
+    var base64Index = dataURI.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
+    var base64 = dataURI.substring(base64Index);
+    var raw = window.atob(base64);
+    var rawLength = raw.length;
+    var array = new Uint8Array(new ArrayBuffer(rawLength));
 
-    setTransform();
+    for (i = 0; i < rawLength; i++) {
+        array[i] = raw.charCodeAt(i);
+    }
+    return array;
 }
 
-// ********  image zoom function End ********////
+// File Reader
+// https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+function readFile(e) {
+    // var imgElem = image._element; //reference to actual image element
+    var f = e.target.files[0];
 
-function rotateLeft() {
-    imageContainer.style.transform = "rotate(90deg)";
-    imageContainer.webkit = "rotate(90deg)";
+    if (f) {
+        if (/(jpe?g|png|gif)$/i.test(f.type)) {
+            var r = new FileReader();
+            r.onload = function(e) {
+                var base64Img = e.target.result;
+                var binaryImg = convertDataURIToBinary(base64Img);
+                var blob = new Blob([binaryImg], { type: f.type });
+                blobURL = window.URL.createObjectURL(blob);
+                fileName = f.name;
+                document.getElementById('nameImg').value = fileName;
+                document.getElementById('typeImg').value = f.type;
+                document.getElementById('sizeImg').value = f.size;
+                document.getElementById('base64Url').value = base64Img;
+                document.getElementById('blobUrl').value = blobURL;
+                document.getElementById('base64Img').src = base64Img;
+                document.getElementById('blobImg').src = blobURL;
+                document.getElementById('binaryImg').innerHTML = JSON.stringify(binaryImg, null, 2);
+            }
+            r.readAsDataURL(f);
+        } else {
+            alert("Failed file type");
+        }
+    } else {
+        alert("Failed to load file");
+    }
 }
 
-function rotateRight() {
-    imageContainer.style.transform = "rotate(-90deg)";
-    imageContainer.webkit = "rotate(90deg)";
+function gettoBase64Bit(e) {
+    var ctx = canvas.getContext("2d");
+    var image = new Image();
+    image.onload = function() {
+        ctx.drawImage(image, 0, 0);
+    };
+    image.src = "" + e + ""
+    dataImagesArray.push(image.src);
+    console.log(dataImagesArray);
 }

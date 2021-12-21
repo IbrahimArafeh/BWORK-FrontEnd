@@ -7,38 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/psGallery.css">
-    <style>
-        .rotate90 {
-            transform: rotate( 90deg);
-            -webkit-transform-origin-y: center;
-        }
-    </style>
+    <script type="text/javascript" src="js/fabric.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+
 </head>
 
 <body onload="addThumbImage()">
     <div class="gallery-container">
         <h2>BWORK Viewer</h2>
         <div class="pagi-container">
-            <figure style="display: flex; justify-content: center; overflow: hidden;">
+            <figure class="ImageViewer-Figure">
                 <div id="ImageViewer-Prev-btn" class="ImageViewer-Prev"> &#60; </div>
                 <div style="overflow: hidden; overflow: hidden;">
-                    <div id="imgDiv" class="imgDiv">
-                        <img src="" alt="imgDiv" id="mainImg" class="figureImg">
-                    </div>
+                    <canvas id="imageCanvas">Your browser does not support HTML5 Canvas</canvas>
                 </div>
                 <div id="ImageViewer-Nxt-btn" class="ImageViewer-Nxt">&#62; </div>
             </figure>
         </div>
         <div>
-            <img src="Content/icon/rotatel.png" alt="" class="rot-left-btn" onclick="rotateLeft()">
-            <img src="Content/icon/rotater.png" alt="" class="rot-left-btn" onclick="rotateRight()">
+            <img src="Content/icon/first-icon.png" alt="" class="sml-img-btn" onclick="firstImage()">
+            <img src="Content/icon/prvIcon.png" alt="" class="sml-img-btn" onclick="previousImage()">
+            <img src="Content/icon/rotatel.png" alt="" class="sml-img-btn" onclick="rotateImageCanvas(-90)">
+            <img src="Content/icon/rotater.png" alt="" class="sml-img-btn" onclick="rotateImageCanvas(90)">
+            <img src="Content/icon/nxtIcon.png" alt="" class="sml-img-btn" onclick="nextImage()">
+            <img src="Content/icon/last-icon.png" alt="" class="sml-img-btn" onclick="lastImage()">
         </div>
-        <div id="thumbListView " class="pic-thumb-view ">
+        <div id="thumbListView " class="pic-thumb-view">
             <div id='thumbnailList' class="pic-thumbnail-list ">
             </div>
         </div>
     </div>
     <script type="text/javascript " src="js/psGallery.js "></script>
+    <script>
+    </script>
 </body>
 
 </html>
