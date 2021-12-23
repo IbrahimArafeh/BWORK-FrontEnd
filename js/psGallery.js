@@ -196,6 +196,7 @@ function fillMainImage(e) {
             /// convert image to Base64 bit it's not working yet
             // var imageBase = canvas.toDataURL("image/jpeg");
             // console.log(imageBase);
+
             canvas.clear();
             if (e.alt == 'nonPicture') {
                 var ctx = canvas.getContext("2d");
