@@ -6,6 +6,7 @@ const imageContainer = document.getElementById("mainImg"); // assigning variable
 const thumbNailList = document.getElementById("thumbnailList");
 var canvas = window._canvas = new fabric.Canvas("imageCanvas");
 const dataImagesArray = [];
+const binaryImageArray = [];
 
 // Previous Image button
 // get src from canvas and replace it with previous item into myimages array
@@ -137,23 +138,23 @@ function addThumbImage() {
         imgDiv.setAttribute('class', 'info-container');
         TagaItem.appendChild(imgDiv);
         var imgTag = document.createElement('img');
-
         imgTag.setAttribute('class', 'info-thumb-pic');
         imgTag.setAttribute('id', 'Imagethumb' + i);
         if (i != 0) {
             imgTag.setAttribute('alt', 'picture');
             imgTag.src = 'Content/' + myimages[i];
-            imgTag.setAttribute('id', 'imageid');
+            imgDiv.appendChild(imgTag);
         }
         if (i == 0) {
             imgTag.setAttribute('alt', 'nonPicture');
             imgTag.src = 'Content/icon/addIcon.png';
             imgTag.setAttribute('onclick', '');
+            imgDiv.appendChild(imgTag);
         }
-        imgDiv.appendChild(imgTag);
         if (i == 1) {
             fillMainImage(TagaItem);
         }
+
     }
 }
 // fill Display image
@@ -192,11 +193,9 @@ function fillMainImage(e) {
                     image.scaleToWidth(canvasWidth);
                 }
             }
-            ///
-            // var ImageData = canvas.toDataURL();
-            // ImageData.replace(/^data:image\/(png|jpg);base64,/, "");
-            // console.log(ImageData);
-            gettoBase64Bit(canvas.toDataURL());
+            /// convert image to Base64 bit it's not working yet
+            // var imageBase = canvas.toDataURL("image/jpeg");
+            // console.log(imageBase);
             canvas.clear();
             if (e.alt == 'nonPicture') {
                 var ctx = canvas.getContext("2d");
@@ -334,14 +333,27 @@ function readFile(e) {
         alert("Failed to load file");
     }
 }
-
+// convert image src to Base64Bit
+// add result to dataImageArray array
 function gettoBase64Bit(e) {
     var ctx = canvas.getContext("2d");
     var image = new Image();
     image.onload = function() {
         ctx.drawImage(image, 0, 0);
     };
-    image.src = "" + e + ""
-    dataImagesArray.push(image.src);
-    console.log(dataImagesArray);
+    image.src = e;
+    return image.src;
+}
+
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
 }
