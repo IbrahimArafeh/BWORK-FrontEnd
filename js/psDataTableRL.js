@@ -187,7 +187,8 @@ function createTable() {
     dataButton.setAttribute('id', 'loadData');
     dataButton.setAttribute('type', 'button');
     dataButton.innerHTML = "Load Data";
-    dataButton.setAttribute('onclick', 'extractData(this,dataArr)');
+	
+    dataButton.setAttribute('onclick', 'extractData');
     dataButton.setAttribute('value', 'Load data');
     dataButton.setAttribute('class', 'ps-btn-light-warning');
     // submitButton.setAttribute('style', 'position: absolute; left:10%;')
@@ -504,16 +505,37 @@ function isColor(element) {
     }
 }
 
-
+/*
 function extractData(e, values) {
     var parentDiv = e.parentNode;
     let parentPDiv = parentDiv.parentNode;
     let myTab = parentPDiv.getElementsByClassName('empTable')[0];
-    for (c = 0; c < values.length; c++) {
-        addDataRow(values[c], myTab);
+    for (d = 0; d < 1000; d++) {
+        for (c = 0; c < values.length; c++) {
+            addDataRow(values[c], myTab);
+        }
     }
-}
+}*/
 
+function extractData(  ) {
+	
+	var tbody = document.getElementById( 'test' );
+	for( r = 0; r < 1000; r++ ){		
+		var row   = tbody.insertRow( 0 );	  
+			for( i =0; i < 5; i++ ){
+				var cell = row.insertCell( i );			
+				cell.innerText = "This is a test " + i;					
+				cell.className = "mandatory";
+			}
+			var cellButton = row.insertCell( 5 );
+			var btn1 = document.createElement( 'button' );
+			btn1.innerText = "Update";
+			var btn2 = document.createElement( 'button' );
+			btn2.innerText = "Remove";
+			cellButton.appendChild( btn1 );
+			cellButton.appendChild( btn2 );
+		}
+	}
 
 
 
