@@ -1,5 +1,5 @@
 // Declaring variable array of images. You can put as many as you want.
-const myimages = ['t1.jpg', '08.jpg', '02.jpg', '07.jpg', '04.jpg', '08.jpg', '02.jpg', '07.jpg', '04.jpg'];
+const myimages = ['t1.jpg', '08.jpg', '02.jpg', '07.jpg', '04.jpg'];
 const prevBtn = document.getElementById("ImageViewer-Prev-btn"); // assigning variable for previous button
 const nextBtn = document.getElementById("ImageViewer-Nxt-btn"); // assigning variable for next button
 const imageContainer = document.getElementById("mainImg"); // assigning variable for image container div
@@ -44,13 +44,14 @@ function nextImage() {
     var imgElem = image._element; //reference to actual image element
     var currentImageSrc = imgElem.src //set image source
     var streetaddress = currentImageSrc.substr(currentImageSrc.length - 6);
+
     var arrayIndex = searchStringInArray(streetaddress, myimages);
     if (arrayIndex < myimages.length - 1) {
         arrayIndex++;
         var newImageSrc = "Content/" + myimages[arrayIndex];
         replaceImage(newImageSrc);
     } else if (arrayIndex = myimages.length - 1) {
-        var newImageSrc = "Content/" + myimages[arrayIndex];
+        var newImageSrc = "Content/" + myimages[0];
         replaceImage(newImageSrc);
     }
 }
@@ -64,11 +65,13 @@ nextBtn.addEventListener("click", function() {
         var newImageSrc = "Content/" + myimages[arrayIndex];
         replaceImage(newImageSrc);
     } else if (arrayIndex = myimages.length - 1) {
-        var newImageSrc = "Content/" + myimages[arrayIndex];
+        var newImageSrc = "Content/" + myimages[0];
         replaceImage(newImageSrc);
     }
 
 });
+
+
 // get last image from myimage array
 function lastImage() {
     var newImageSrc = "Content/" + myimages[myimages.length - 1];
@@ -124,10 +127,13 @@ $(canvas.wrapperEl).on("mousewheel", function(event) {
 function addThumbImage() {
     var picThumbList = document.getElementById('thumbnailList');
 
+    // add array of image_name myimages has image name --> should modify when fetch images from back-end
     for (var i = 0; i < myimages.length; i++) {
+
         var ThumbnailDiv = document.createElement('div');
         ThumbnailDiv.setAttribute('class', 'thumbnail');
         picThumbList.appendChild(ThumbnailDiv);
+
         var TagaItem = document.createElement('a');
         TagaItem.setAttribute('href', '#');
         TagaItem.setAttribute('onclick', 'fillMainImage(this)');
@@ -137,21 +143,32 @@ function addThumbImage() {
         imgDiv.setAttribute('id', 'imgDiv');
         imgDiv.setAttribute('class', 'info-container');
         TagaItem.appendChild(imgDiv);
+
         var imgTag = document.createElement('img');
         imgTag.setAttribute('class', 'info-thumb-pic');
         imgTag.setAttribute('id', 'Imagethumb' + i);
-        if (i != 0) {
-            imgTag.setAttribute('alt', 'picture');
-            imgTag.src = 'Content/' + myimages[i];
-            imgDiv.appendChild(imgTag);
-        }
+
+        imgTag.setAttribute('alt', 'picture');
+        // added src as static value --> should modify when fetch images from back-end
+        imgTag.src = 'Content/' + myimages[i];
+        imgDiv.appendChild(imgTag);
+
+
+        // if (i != 0) {
+        //     imgTag.setAttribute('alt', 'picture');
+        //     // added src as static value --> should modify when fetch images from back-end
+        //     imgTag.src = 'Content/' + myimages[i];
+        //     imgDiv.appendChild(imgTag);
+        // }
+
+        // if (i == 0) {
+        //     imgTag.setAttribute('alt', 'nonPicture');
+        //     imgTag.src = 'Content/icon/addIcon.png';
+        //     imgTag.setAttribute('onclick', '');
+        //     imgDiv.appendChild(imgTag);
+        // }
+
         if (i == 0) {
-            imgTag.setAttribute('alt', 'nonPicture');
-            imgTag.src = 'Content/icon/addIcon.png';
-            imgTag.setAttribute('onclick', '');
-            imgDiv.appendChild(imgTag);
-        }
-        if (i == 1) {
             fillMainImage(TagaItem);
         }
 
@@ -160,7 +177,6 @@ function addThumbImage() {
 // fill Display image
 function fillMainImage(e) {
     if (checkIMG(e)) {
-        canvas.clear();
         var img = document.createElement("img");
         img.setAttribute('id', 'mainImg');
         img.src = e.src;
@@ -198,16 +214,19 @@ function fillMainImage(e) {
             // console.log(imageBase);
 
             canvas.clear();
-            if (e.alt == 'nonPicture') {
-                var ctx = canvas.getContext("2d");
-                ctx.font = "30px Comic Sans MS";
-                ctx.fillStyle = "white";
-                ctx.textAlign = "center";
-                ctx.fillText("upload new image", canvas.width / 2, canvas.height / 2);
-            } else {
-                canvas.centerObject(image);
-                canvas.add(image);
-            }
+            canvas.centerObject(image);
+            canvas.add(image);
+
+            // if (e.alt == 'nonPicture') {
+            //     var ctx = canvas.getContext("2d");
+            //     ctx.font = "30px Comic Sans MS";
+            //     ctx.fillStyle = "white";
+            //     ctx.textAlign = "center";
+            //     ctx.fillText("upload new image", canvas.width / 2, canvas.height / 2);
+            // } else {
+            //     canvas.centerObject(image);
+            //     canvas.add(image);
+            // }
 
         });
     } else {
